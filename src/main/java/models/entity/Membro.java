@@ -1,6 +1,6 @@
-package models.entity;
+package src.main.java.models.entity;
 
-public class Usuario {
+public class Membro {
     private int id;
     private String nome;
     private String email;
