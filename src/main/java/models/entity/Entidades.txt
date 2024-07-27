@@ -1,0 +1,239 @@
+Tema: Site de Projetos de Extensão
+Vertente: Gestão de projetos
+Objetivo: Gestão de membros e atividades do projeto (não direcionadas ao público)
+
+
+O site deve ter:
+
+Kanbam
+Aba da atividade
+seção de Queries (Consulta horas)
+seção Sobre
+seção Relatório
+seção Atividades **
+
+seção Autenticação: o Aluno vai realizar o cadastro na plataforma , e a aplicação irá puxar do banco os projetos afiliados a ele.
+
+Nome:
+Participantes:
+Sala:
+
+
+ATRIBUTOS
+
+- Tá , mas o que vai existir dentro do site ?
+
+- Projeto extensão:
+	- LoginService (não é uma entidade , mas um serviço)
+	- Documentações:
+		- Artigos feitos
+		- Notícias
+		- Tutoriais (Passo a passo das atividades , por exemplo)
+		- Projetos feitos
+	- Projeto Extensão:
+			- membros : List<Membro>
+			- Coordernador : Coordenador
+			- relatorios : List<Relatorio>
+			- noticias : List<Noticia>
+			- atividades : List<Atividade>
+			- areasAtuacao : List <String>
+			- salaProjeto : List <Sala>
+			- situacaoAtual : boolean 
+			- dataVigencia : Date
+			- titulo : String
+	-  Graduação:
+		- Nome
+
+	- Professor:
+		- Nome
+		- email
+		- SIAPE
+		- Disciplinas ( Classe )
+		- Graduações ( Classe )
+
+
+	- Coordenador (é Professor):
+		- Nome
+		- email
+		- SIAPE
+		- Disciplinas ( Classe )
+		- Graduações ( Classe )
+		- Projetos Ministrados ( Lista Projeto Extensão )
+		- Relatório PREX
+
+
+	- Aluno:
+		- Nome
+		- email
+		- Cargo
+		- matrícula
+		- curso
+
+	- Membro do Projeto ( é Aluno ):
+		- Nome
+		- email
+		- Cargo
+		- matrícula
+		- curso
+		- Atividades (classe Atividade)
+
+	- Documento:
+		- descricao
+		- arquivos 
+		- dataPublicacao
+		- MembroResponsavel
+		- historico
+
+	- Documentação:
+		- Documentos (classe Documento),
+
+	- Bolsista (é Membro ):
+		- Nome
+		- email
+		- Cargo
+		- matrícula
+		- curso
+		- Atividades (classe)
+		- Relatório BIA 
+
+	- Atividades:
+		- Nome
+		- Status (to do  , doing , done)
+		- Responsável
+		- Data de criação
+		- Descrição
+		- Comentários
+		- tipo (depende do projeto)
+		- tags 
+		- Complexidade
+		- original estimate 
+		- horas gastas
+		- SalaAtividade
+
+	- Notícia:
+		- Título
+		- descrição
+		- DataCriacao
+
+	- Sala:
+		- Local
+
+
+	- Relatório:
+		- tipo (BIA , PREX)
+		- Observações
+		- campoAnexo
+		- dataLimite
+
+
+
+
+
+
+Métodos:
+
+
+- Projeto extensão:
+	
+	- Projeto Extensão:
+		- criarProjeto
+		- removerProjeto
+		- editarProjeto
+			
+
+	- Coordenador (é Professor):
+		- cadastrarMembro (Membro membro)
+		- lerMembro (Membro membro)
+		- atualizarMembro (Membro membro)
+		- removerMembro (Membro membro)
+		- cadastrarProjeto (ProjetoExtensão projeto)
+		- removerProjeto
+		- criarAtividade
+		- lerAtividade
+		- excluirAtividade
+		- editarAtividade
+		- criarDocumento
+		- lerDocumento
+		- excluirDocumento
+		- editarDocumento
+		- criarRelatórioPREX
+		- lerRelatórioPREX
+		- atualizarRelatórioPREX
+		- removerRelatórioPREX
+		- criarNotícia
+		- lerNotícia
+		- atualizarNotícia
+		- removerNotícia
+
+
+	- Membro do Projeto ( é Aluno ):
+		- criarAtividade
+		- lerAtividade
+		- excluirAtividade
+		- editarAtividade
+		- criarDocumento
+		- lerDocumento
+		- excluirDocumento
+		- editarDocumento
+		- lerNoticia
+		
+		
+		
+
+
+	- Bolsista (é Membro ):
+		- criarAtividade
+		- lerAtividade
+		- excluirAtividade
+		- editarAtividade
+		- criarDocumento
+		- lerDocumento
+		- excluirDocumento
+		- editarDocumento
+		- lerNoticia
+		- criarRelatórioBIA
+		- lerRelatórioBIA
+		- atualizarRelatórioBIA
+		- removerRelatórioBIA
+
+	- Atividades:
+		- inserirNome
+		- inserirStatus (A fazer, fazendo, feito)
+		- inserirResponsável
+		- inserirDataCriação
+		- inserirDescrição
+		- inserirComentários
+		- inserirTipo (depende do projeto)
+		- inserirTags 
+		- inserirComplexidade
+		- inserirHorasEstimadas 
+		- InserirHorasGastas
+		- InserirSalaAtividade
+		- criarAtividade (enviar pra esteira)
+
+
+	   - Documento:
+		   enviarDocumento
+		   cancelarDocumento
+		
+	- Documentacao:
+		- criarDocumento
+		- excluirDocumento
+		- editarDocumento
+		- lerDocumento
+		- cancelarDocumento
+
+	- Notícia:
+		-enviarNoticia
+		-cancelarNoticia
+
+
+	- Relatório:
+		- enviarRelatório
+		- cancelarRelatorio
+
+
+
+CONCLUSÃO
+
+- Revisão valeu a pena !!!!!!!!!!!!

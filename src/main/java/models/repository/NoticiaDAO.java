@@ -2,12 +2,14 @@ package models.repository;
 
 import java.sql.SQLException;
 
+import models.entity.Noticia;
+
 public class NoticiaDAO {
-    public void enviar() throws SQLException {
+    public void enviarNoticia(Noticia noticia) throws SQLException {
         
     }
 
-    public void excluir() throws SQLException {
+    public void cancelarNoticia(Noticia noticia) throws SQLException {
 
     }
 }

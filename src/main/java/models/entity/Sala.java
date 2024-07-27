@@ -2,30 +2,19 @@ package models.entity;
 
 public class Sala {
     /*ATRIBUTOS*/
-    private String nome;
-    private int capacidadeMaxima;
+    private String local;
     
     /*CONSTRUTOR */
-    public Sala(String nome, int capacidadeMaxima) {
-        this.nome = nome;
-        this.capacidadeMaxima = capacidadeMaxima;
+    public Sala(String local) {
+        this.local = local;
     }
 
     /*GETTERS E SETTERS*/
-    public String getNome() {
-        return nome;
+    public String getLocal() {
+        return local;
     }
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setLocal(String local) {
+        this.local = local;
     }
-    public int getCapacidadeMaxima() {
-        return capacidadeMaxima;
-    }
-    public void setCapacidadeMaxima(int capacidadeMaxima) {
-        if (capacidadeMaxima > 0) {
-            this.capacidadeMaxima = capacidadeMaxima;
-        } else {
-            System.out.println("Capacidade inválida");
-        }
-    }
+    
 }

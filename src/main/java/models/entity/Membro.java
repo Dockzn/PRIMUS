@@ -1,41 +1,23 @@
 package models.entity;
+import java.util.List;
 
 public class Membro extends Aluno{
 
-
-    public Membro(String nome, String email, String cargo, String matricula, String curso) {
+    //ATRIBUTOS//
+    private List<Atividade> atividades;
+    //CONSTRUTOR//
+    public Membro(String nome, String email, String cargo, String matricula, String curso, List<Atividade> atividades) {
         super(nome, email, cargo, matricula, curso);
-        
+        this.atividades = atividades;
     }
-
-    private int id;
-    private String nome;
-    private String email;
+    
+    public List<Atividade> getAtividades() {
+        return atividades;
+    }
+    public void setAtividades(List<Atividade> atividades) {
+        this.atividades = atividades;
+    }
 
     
-    // Getters e Setters
-    
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }

@@ -1,15 +1,15 @@
 package models.entity;
-import java.util.ArrayList;
 import java.util.List;
 
-public class Coordenador {
+public class Coordenador extends Professor{
+    // ATRIBUTOS //
     private List<ProjetoExtensao> projetosCoordenados;
-    private String SIAPE;
    
     /*CONSTRUTOR */
-    public Coordenador(String SIAPE) {
-    this.SIAPE = SIAPE;
-    this.projetosCoordenados = new ArrayList<>();
+    
+    public Coordenador(String nome, String email, String SIAPE, List<ProjetoExtensao> projetosCoordenados) {
+        super(nome, email, SIAPE);
+        this.projetosCoordenados = projetosCoordenados;
     }
     
     /*GETTERS E SETTERS */
@@ -18,12 +18,6 @@ public class Coordenador {
     }
     public void setProjetosCoordenados(List<ProjetoExtensao> projetosCoordenados) {
     this.projetosCoordenados = projetosCoordenados;
-    }
-    public String getSIAPE() {
-    return SIAPE;
-    }
-    public void setSIAPE(String SIAPE) {
-    this.SIAPE = SIAPE;
     }
 }
 
