@@ -1,7 +1,7 @@
-package src.main.java.controllers;
+package controllers;
 
-import src.main.java.models.entity.Membro;
-import src.main.java.models.repository.MembroDAO;
+import models.entity.Membro;
+import models.repository.MembroDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;

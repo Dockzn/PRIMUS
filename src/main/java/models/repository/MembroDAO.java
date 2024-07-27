@@ -1,5 +1,5 @@
 
-package src.main.java.models.repository;
+package models.repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import src.main.java.models.entity.Membro;
-import src.main.java.routes.DataBaseConnection;
+import models.entity.Membro;
+import routes.DataBaseConnection;
 
 public class MembroDAO {
 
@@ -30,7 +30,7 @@ public class MembroDAO {
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-                Membro membro = new Membro();
+                Membro membro = new Membro(sql, sql, sql, sql, sql); //Teste 
                 membro.setId(rs.getInt("id"));
                 membro.setNome(rs.getString("nome"));
                 membro.setEmail(rs.getString("email"));
