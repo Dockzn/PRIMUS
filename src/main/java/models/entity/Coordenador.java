@@ -7,17 +7,17 @@ public class Coordenador extends Professor{
    
     /*CONSTRUTOR */
     
-    public Coordenador(String nome, String email, String SIAPE, List<ProjetoExtensao> projetosCoordenados) {
+    public Coordenador(String nome, String email, String SIAPE) {
         super(nome, email, SIAPE);
-        this.projetosCoordenados = projetosCoordenados;
     }
     
     /*GETTERS E SETTERS */
     public List<ProjetoExtensao> getProjetosCoordenados() {
-    return projetosCoordenados;
+        return projetosCoordenados;
     }
-    public void setProjetosCoordenados(List<ProjetoExtensao> projetosCoordenados) {
-    this.projetosCoordenados = projetosCoordenados;
+    public void setProjetosCoordenados(ProjetoExtensao projeto) {
+        if(projeto != null) 
+            projetosCoordenados.add(projeto);
     }
 }
 

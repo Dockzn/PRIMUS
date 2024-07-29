@@ -14,10 +14,9 @@ public class Membro extends Aluno{
     public List<Atividade> getAtividades() {
         return atividades;
     }
-    public void setAtividades(List<Atividade> atividades) {
-        this.atividades = atividades;
-    }
-
     
+    public void setAtividades(List<Atividade> atividades) {
+        if(atividades != null) this.atividades = atividades;
+    }
 
 }
