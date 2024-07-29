@@ -14,9 +14,13 @@ public class Membro extends Aluno{
     public List<Atividade> getAtividades() {
         return atividades;
     }
-    
-    public void setAtividades(List<Atividade> atividades) {
-        if(atividades != null) this.atividades = atividades;
-    }
 
+    public void setAtividades(Atividade atividade) {
+        if (atividade == null) {                           //Verifica se a atividade eh nula
+            throw new IllegalArgumentException("A atividade nao pode ser nula.");
+        }
+        else{
+            atividades.add(atividade);
+        }
+    }
 }

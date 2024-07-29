@@ -14,6 +14,9 @@ public class Sala {
         return local;
     }
     public void setLocal(String local) {
+        if(local == null){                       //Verifica se a variavel eh nula
+            throw new IllegalArgumentException("O local não pode ficar vazio.");
+        }
         this.local = local;
     }
     

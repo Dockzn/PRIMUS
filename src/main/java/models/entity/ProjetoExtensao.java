@@ -1,6 +1,6 @@
 package models.entity;
 import java.util.ArrayList;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class ProjetoExtensao {
 
@@ -8,11 +8,11 @@ public class ProjetoExtensao {
     private ArrayList<String> membros = new ArrayList<>();
     private Coordenador coordernador;
     private ArrayList<String> relatorios = new ArrayList<>();
-    private ArrayList<String> noticia = new ArrayList<>();
+    private ArrayList<String> noticias = new ArrayList<>();
     private ArrayList<String> atividades = new ArrayList<>();
     private ArrayList<String> areasAtuacao = new ArrayList<>();
-    private ArrayList<String> salaProjeto = new ArrayList<>();
-    private Date dataVigencia;
+    private ArrayList<String> salasProjeto = new ArrayList<>();
+    private LocalDate dataVigencia;
     private String titulo;
     private enum Situacaoatual{
         ATIVO,
@@ -23,15 +23,15 @@ public class ProjetoExtensao {
 
     //CONSTRUTOR//
     public ProjetoExtensao(ArrayList<String> membros, Coordenador coordernador, ArrayList<String> relatorios,
-            ArrayList<String> noticia, ArrayList<String> atividades, ArrayList<String> areasAtuacao,
-            ArrayList<String> salaProjeto, Date dataVigencia, String titulo, Situacaoatual situacao) {
+            ArrayList<String> noticias, ArrayList<String> atividades, ArrayList<String> areasAtuacao,
+            ArrayList<String> salasProjeto, LocalDate dataVigencia, String titulo, Situacaoatual situacao) {
         this.membros = membros;
         this.coordernador = coordernador;
         this.relatorios = relatorios;
-        this.noticia = noticia;
+        this.noticias = noticias;
         this.atividades = atividades;
         this.areasAtuacao = areasAtuacao;
-        this.salaProjeto = salaProjeto;
+        this.salasProjeto = salasProjeto;
         this.dataVigencia = dataVigencia;
         this.titulo = titulo;
         this.situacao = situacao;
@@ -41,55 +41,98 @@ public class ProjetoExtensao {
     public ArrayList<String> getMembros() {
         return membros;
     }
-    public void setMembros(ArrayList<String> membros) {
-        this.membros = membros;
+    public void setMembros(String membro) {
+        if (membro == null) {                           //Verifica se o membro é nulo
+            throw new IllegalArgumentException("O membro nao pode ser nulo.");
+        }
+        else{
+            membros.add(membro);
+        }
     }
     public Coordenador getCoordernador() {
         return coordernador;
     }
     public void setCoordernador(Coordenador coordernador) {
+        if (coordernador == null) {                     //Verifica se a variavel eh nula
+            throw new IllegalArgumentException("O coordenador nao pode ser nulo.");
+        }
         this.coordernador = coordernador;
     }
     public ArrayList<String> getRelatorios() {
         return relatorios;
     }
-    public void setRelatorios(ArrayList<String> relatorios) {
-        this.relatorios = relatorios;
+    public void setRelatorios(String relatorio) {
+        if (relatorio == null) {                       //Verifica se a lista eh nula
+            throw new IllegalArgumentException("O relatorio nao pode ser nulo.");
+        }
+        else{
+            relatorios.add(relatorio);
+        }
     }
-    public ArrayList<String> getNoticia() {
-        return noticia;
+    public ArrayList<String> getNoticias() {
+        return noticias;
     }
-    public void setNoticia(ArrayList<String> noticia) {
-        this.noticia = noticia;
+    public void setNoticias(String noticia) {
+        if (noticia == null) {                          //Verifica se a noticias eh nula
+            throw new IllegalArgumentException("A noticia nao pode ser nula.");
+        }
+        else{
+            noticias.add(noticia);
+        }
     }
     public ArrayList<String> getAtividades() {
         return atividades;
     }
-    public void setAtividades(ArrayList<String> atividades) {
-        this.atividades = atividades;
+    public void setAtividades(String atividade) {
+        if (atividade == null) {                           //Verifica se a atividade eh nula
+            throw new IllegalArgumentException("A atividade nao pode ser nula.");
+        }
+        else{
+            atividades.add(atividade);
+        }
     }
     public ArrayList<String> getAreasAtuacao() {
         return areasAtuacao;
     }
-    public void setAreasAtuacao(ArrayList<String> areasAtuacao) {
-        this.areasAtuacao = areasAtuacao;
+    public void setAreasAtuacao(String areaAtuacao) {
+        if (areaAtuacao == null) {                     //Verifica se a areaAtuacao eh nula
+            throw new IllegalArgumentException("A areaAtuacao nao pode ser nula.");
+        }
+        else{
+            areasAtuacao.add(areaAtuacao);
+        }
     }
-    public ArrayList<String> getSalaProjeto() {
-        return salaProjeto;
+    public ArrayList<String> getSalasProjeto() {
+        return salasProjeto;
     }
-    public void setSalaProjeto(ArrayList<String> salaProjeto) {
-        this.salaProjeto = salaProjeto;
+    public void setSalasProjeto(String salaProjeto) {
+        if (salaProjeto == null) {                      //Verifica se a sala eh nula
+            throw new IllegalArgumentException("A salaProjeto nao pode ser nula.");
+        }
+        else{
+            salasProjeto.add(salaProjeto);
+        }
     }
-    public Date getDataVigencia() {
+    public LocalDate getDataVigencia() {
         return dataVigencia;
     }
-    public void setDataVigencia(Date dataVigencia) {
+    public void setDataVigencia(LocalDate dataVigencia) {
+        if (dataVigencia == null) {                     //Verifica se a data eh nula
+            throw new IllegalArgumentException("A data vigencia não pode ser nula.");
+        }
+        LocalDate hoje = LocalDate.now();              //cria a data de hoje como parametro para a condicao
+        if (dataVigencia.isAfter(hoje)) {                //Verifica se a data esta no passado
+            throw new IllegalArgumentException("A data vigencia não pode ser no passado.");
+        }
         this.dataVigencia = dataVigencia;
     }
     public String getTitulo() {
         return titulo;
     }
     public void setTitulo(String titulo) {
+        if (titulo == null) {                           //Verifica se o valor eh nula
+            throw new IllegalArgumentException("O titulo não pode ser nulo.");
+        }
         this.titulo = titulo;
     }
 
@@ -98,12 +141,10 @@ public class ProjetoExtensao {
     }
 
     public void setSituacao(Situacaoatual situacao) {
+        if (situacao == null) {                         //Verifica se a variavel eh nula
+            throw new IllegalArgumentException("A situacao não pode ser nula.");
+        }
         this.situacao = situacao;
     }
     
-
-
-    
 }
-
-    
