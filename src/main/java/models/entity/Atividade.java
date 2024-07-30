@@ -1,66 +1,30 @@
 package models.entity;
 import java.time.LocalDate;
 
-
 public class Atividade {
     //ATRIBUTOS
-    private String nome;
-    private String responsavel;
-    private LocalDate dataCriacao = LocalDate.now();
-    private String comentario;
-    private String tags; // NECESSACARIO CRIAR CLASSE DE TAG PARA SER POSSIVEL TER UMA LISTA DE TAGS COMO ATRIBUTO DESTA CLASSE
-    public enum Complexidade {
-        FACIL(3),
-        MEDIO(2),
-        DIFICIL(1);
-    
-        private final int valor;
-    
-        Complexidade(int valor) {
-            this.valor = valor;
-        }
-    
-        public int getValor() {
-            return valor;
-        }
-    }
-    private Complexidade complexidade;
-    private int horaEstimada;
-    private String salaAtividade;
-
-    public enum Status {
-        AFAZER(3),
-        FAZENDO(2),
-        FEITO(1);
-    
-        private final int valor;
-    
-        Status(int valor) {
-            this.valor = valor;
-        }
-    
-        public int getValor() {
-            return valor;
-        }
-    }
-    private Status status;
+    private String nome, responsavel, comentario, tags, sala;
+    private LocalDate dataCriacao = LocalDate.now(); // NECESSACARIO CRIAR CLASSE DE TAG PARA SER POSSIVEL TER UMA LISTA DE TAGS COMO ATRIBUTO DESTA CLASSE
+    private AtividadeComplexidade complexidade;
+    private int horas, horasCumpridas;
+    private AtividadeStatus status;
     
     //CONSTRUTOR
-    public Atividade(String nome, String responsavel, LocalDate dataCriacao, String comentario, String tags,
-            Complexidade complexidade, int horaEstimada, String salaAtividade, Status status) {
+    public Atividade(String nome, String responsavel, String comentario, String tags, String sala,
+            LocalDate dataCriacao, AtividadeComplexidade complexidade, int horas, AtividadeStatus status) {
         this.nome = nome;
         this.responsavel = responsavel;
-        this.dataCriacao = dataCriacao;
         this.comentario = comentario;
         this.tags = tags;
+        this.sala = sala;
+        this.dataCriacao = dataCriacao;
         this.complexidade = complexidade;
-        this.horaEstimada = horaEstimada;
-        this.salaAtividade = salaAtividade;
+        this.horas = horas;
         this.status = status;
     }
+    
 
     //GETTERS E SETTERS//
-
     public String getNome() {
         return nome;
     }
@@ -74,12 +38,17 @@ public class Atividade {
         return responsavel;
     }
 
-    //Se nome do responsavel for diferente de nulo
-    public void setResponsavel(String responsavel){
-        if(responsavel != null){
-            this.responsavel = responsavel;
-        }
+    public int getHorasCumpridas() {
+        return horasCumpridas;
+    }
 
+    public void setHorasCumpridas(int horasCumpridas) {
+        if (horasCumpridas < 0) this.horasCumpridas = horasCumpridas;
+    }
+
+    //Se nome do responsavel for diferente de nulo
+    public void setResponsavel(String responsavel) {
+        if(responsavel != null) this.responsavel = responsavel;
     }
 
 
@@ -108,44 +77,39 @@ public class Atividade {
             this.tags = tags;
     }
 
-    public Complexidade getComplexidade() {
+    public AtividadeComplexidade getComplexidade() {
         return complexidade;
     }
 
     //O setter de complexidade deve atender as 3 constantes do enum que representam a dificuldade da atividade
-    public void setComplexidade(Complexidade complexidade) {
-        if(complexidade == Complexidade.FACIL || complexidade == Complexidade.MEDIO || complexidade == Complexidade.DIFICIL) 
-            this.complexidade = complexidade;
+    public void setComplexidade(AtividadeComplexidade complexidade) {
+        if (complexidade != null) this.complexidade = complexidade;
     }
 
-    public int getHoraEstimada() {
-        return horaEstimada;
+    public int getHoras() {
+        return horas;
     }
 
     //Hora estimada para o fim da atividade deve ser maior do que zero. Menor ou igual que 0 não faz sentido
-    public void setHoraEstimada(int horaEstimada) {
-        if(horaEstimada > 0) 
-            this.horaEstimada = horaEstimada;
+    public void setHoras(int horas) {
+        if (horas > 0) this.horas = horas;
     }
 
-    public String getSalaAtividade() {
-        return salaAtividade;
+    public String getSala() {
+        return sala;
     }
 
 
-    public void setSalaAtividade(String salaAtividade) {
-        if(salaAtividade != null) this.salaAtividade = salaAtividade;
+    public void setSala(String sala) {
+        if(sala != null) this.sala = sala;
     }
 
-    public Status getStatus() {
+    public AtividadeStatus getStatus() {
         return status;
     }
 
     //O setter de status deve atender as 3 constantes do enum que representam o status da atividade no sistema    
-    public void setStatus(Status status) {
-        if(status == Status.AFAZER || status == Status.FAZENDO || status == Status.FEITO) 
-            this.status = status;
+    public void setStatus(AtividadeStatus status) {
+        if (status != null) this.status = status;
     }
-
-    
 }

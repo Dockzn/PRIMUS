@@ -1,8 +1,9 @@
 package models.entity;
 import java.util.List;
 
+//virar atributo
+public class Bolsista extends Membro {
 
-public class Bolsista extends Membro{
     //ATRIBUTOS//
     private String relatorioBIA;    
     //CONSTRUTOR//

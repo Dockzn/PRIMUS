@@ -1,24 +1,30 @@
 package models.entity;
 import java.util.List;
 
-public class Coordenador extends Professor{
+public class Coordenador extends Professor {
     // ATRIBUTOS //
     private List<ProjetoExtensao> projetosCoordenados;
    
     /*CONSTRUTOR */
     
-    public Coordenador(String nome, String email, String SIAPE) {
-        super(nome, email, SIAPE);
+    public Coordenador(String nome, String email, String siape) {
+        super(nome, email, siape);
     }
     
     /*GETTERS E SETTERS */
     public List<ProjetoExtensao> getProjetosCoordenados() {
         return projetosCoordenados;
     }
-    public void setProjetosCoordenados(ProjetoExtensao projeto) {
-        if(projeto != null) 
-            projetosCoordenados.add(projeto);
+    
+    public void setProjetosCoordenados(List<ProjetoExtensao> projetosCoordenados) {
+        this.projetosCoordenados = projetosCoordenados;
     }
+
+    /*
+    public void adicionarProjeto(Projeto projeto) {
+        this.projetosCoordenados.add(projeto);
+    }
+    */
 }
 
 

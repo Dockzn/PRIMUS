@@ -4,7 +4,9 @@ import java.util.List;
 
 public class Documentacao {
     //ATRIBUTOS//
-
+    /** 
+     * COmentar sobre as classes
+     */
     private List<Documento> documentos;
 
     public Documentacao(List<Documento> documentos) {
@@ -15,8 +17,8 @@ public class Documentacao {
         return documentos;
     }
 
-    public void setDocumentos(Documento documento) {
-            documentos.add(documento);
+    public void setDocumentos(List<Documento> documentos) {
+        this.documentos = documentos;
     }
 
     @Override
@@ -30,5 +32,7 @@ public class Documentacao {
         sb.append('}');
         return sb.toString();
     }
+
+    
 
 }

@@ -1,19 +1,16 @@
 package models.entity;
 import java.sql.Date;
-
-
+import java.util.List;
 
 public class Documento {
     //ATRIBUTOS//
-    private String descricao;
-    private String arquivos; // FALAR COM MARCOS SOBRE ESSE ATRIBUTO
+    private String descricao, arquivos; // FALAR COM MARCOS SOBRE ESSE ATRIBUTO criar lista de files
     private Date dataPublicacao;
     private String membroResponsavel;
-    private String historico;
+    private List<Membro> historico;
     
     //CONSTRUTOR//
-    public Documento(String descricao, String arquivos, Date dataPublicacao, String membroResponsavel,
-            String historico) {
+    public Documento(String descricao, String arquivos, Date dataPublicacao, String membroResponsavel,List<Membro> historico) {
         this.descricao = descricao;
         this.arquivos = arquivos;
         this.dataPublicacao = dataPublicacao;
@@ -63,15 +60,12 @@ public class Documento {
             this.membroResponsavel = membroResponsavel;
     }
 
-    public String getHistorico() {
+    public List<Membro> getHistorico() {
         return historico;
     }
-
-    //Historico de quem acessou
-    public void setHistorico(String historico) {
-        if(historico != null) 
-            this.historico = historico;
+    public void setHistorico(List<Membro> historico) {
+        this.historico = historico;
     }
-
+    
     
 }

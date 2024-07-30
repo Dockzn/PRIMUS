@@ -1,19 +1,20 @@
 package models.entity;
-import java.time.LocalDate;
-public class Relatorio {
-    //ATRIBUTOS//
-    public enum Tipo {
-        BIA,
-        PREX
-    }
+import java.util.Date;
 
-    private Tipo tipo; // Enum Tipo
-    private String observacoes;
-    private String campoAnexo;
-    private LocalDate dataLimite;
+/**
+ * Classe referente aos relatórios. Ex.: Tal e tal
+ * 
+ * @author Arthur
+ */
+public class Relatorio {
+
+    //ATRIBUTOS//
+    private AtividadeTipo tipo;
+    private String observacoes, campoAnexo;
+    private Date dataLimite;
 
     // Construtor
-    public Relatorio(Tipo tipo, String observacoes, String campoAnexo, LocalDate dataLimite) {
+    public Relatorio(AtividadeTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
         this.tipo = tipo;
         this.observacoes = observacoes;
         this.campoAnexo = campoAnexo;
@@ -21,13 +22,18 @@ public class Relatorio {
     }
 
     // Getters e Setters
-    public Tipo getTipo() {
+    public AtividadeTipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) { 
-        if (tipo == Tipo.BIA || tipo == Tipo.PREX) // Verifica se 'tipo' tem valores do enum
-            this.tipo = tipo;                      
+    /**
+     * 
+     * @param tipo
+     * 
+     * Legal e legal
+     */
+    public void setTipo(AtividadeTipo tipo) {
+        this.tipo = tipo;
     }
 
     public String getObservacoes() {
@@ -35,9 +41,6 @@ public class Relatorio {
     }
 
     public void setObservacoes(String observacoes) {
-        if (observacoes == null) {                  //Verifica se a variavel eh nula
-            throw new IllegalArgumentException("Observacoes não pode ficar vazia.");
-        }
         this.observacoes = observacoes;
     }
 
@@ -46,24 +49,14 @@ public class Relatorio {
     }
 
     public void setCampoAnexo(String campoAnexo) {
-        if (campoAnexo == null) {                   //Verifica se a variavel eh nula
-            throw new IllegalArgumentException("campoAnexo não pode ficar vazio.");
-        }
         this.campoAnexo = campoAnexo;
     }
 
-    public LocalDate getDataLimite() {
+    public Date getDataLimite() {
         return dataLimite;
     }
 
-    public void setDataLimite(LocalDate dataLimite) {
-        if (dataLimite == null) {                   //Verifica se a data eh nula
-            throw new IllegalArgumentException("A data limite não pode ser nula.");
-        }
-        LocalDate hoje = LocalDate.now();                   //cria a data para a condicao
-        if (dataLimite.isBefore(hoje)) {              //Verifica se a data esta no passado
-            throw new IllegalArgumentException("A data limite não pode ser no passado.");
-        }
+    public void setDataLimite(Date dataLimite) {
         this.dataLimite = dataLimite;
     }
 }

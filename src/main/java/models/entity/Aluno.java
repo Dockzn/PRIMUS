@@ -2,11 +2,7 @@ package models.entity;
 
 public class Aluno {
     // Atributos
-    private String nome;
-    private String email;
-    private String cargo;
-    private String matricula;
-    private String curso;
+    private String nome, email, cargo, matricula, curso;
 
     // Construtor
     public Aluno(String nome, String email, String cargo, String matricula, String curso) {

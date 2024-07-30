@@ -1,17 +1,17 @@
 package models.entity;
-import java.time.LocalDate;
+
+import java.util.Date;
 
 public class Noticia {
     //ATRIBUTOS//
-    private String titulo;
-    private String descricao;
-    private LocalDate dataCriacao = LocalDate.now();
-
+    private String titulo, descricao;
+    private Date dataCriacao;
     
     //CONSTRUTOR//
     public Noticia(String titulo, String descricao) {
         this.titulo = titulo;
         this.descricao = descricao;
+        this.dataCriacao = new Date();
     }
     
     //GETTERS E SETTERS//
@@ -20,9 +20,6 @@ public class Noticia {
     }
     
     public void setDescricao(String descricao) {
-        if(descricao == null){                      //Verifica se a variavel eh nula
-            throw new IllegalArgumentException("A descricao não pode ficar vazia.");
-        }
         this.descricao = descricao;
     }
 
@@ -31,14 +28,14 @@ public class Noticia {
     }
 
     public void setTitulo(String titulo){
-        if(titulo == null){                         //Verifica se a variavel eh nula
-            throw new IllegalArgumentException("O titulo não pode ficar vazio.");
-        }
         this.titulo = titulo;
     }
     
-    public LocalDate getDataCriacao() {
+    public Date getDataCriacao() {
         return dataCriacao;
     }
 
+    public void setDataCriacao(Date dataCriacao) {
+        if (dataCriacao != null) this.dataCriacao = dataCriacao;
+    }
 }
