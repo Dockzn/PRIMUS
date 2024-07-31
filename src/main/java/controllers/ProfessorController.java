@@ -1,53 +1,52 @@
 package controllers;
 
-import models.repository.BolsistaDAO;
-
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/BolsistaController")
-public class BolsistaController extends HttpServlet {
-    private static final long serialVersionUID = 1L;
-    private BolsistaDAO bolsistaDAO;
+import models.entity.Professor;
+import models.repository.ProfessorDAO;
 
-    public BolsistaController() {
+@WebServlet("/ProfessorController")
+public class ProfessorController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+    private ProfessorDAO professorDAO;
+
+    public ProfessorController() {
         super();
-        this.bolsistaDAO = new BolsistaDAO();
+        this.professorDAO = new ProfessorDAO();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<BolsistaDAO> bolsistas = null;
+        List<Professor> professores = null;
         try {
-            bolsistas = bolsistaDAO.listarBolsistas();
+            professores = professorDAO.listarProfessores();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        request.setAttribute("bolsistas", bolsistas);
-        request.getRequestDispatcher("/views/list-bolsistas.jsp").forward(request, response);
+        request.setAttribute("professores", professores);
+        request.getRequestDispatcher("/views/list-professores.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
-        String cargo = request.getParameter("cargo");
-        String matricula = request.getParameter("matricula");
-        String curso = request.getParameter("curso");
-        String relatorioBIA = request.getParameter("relatorioBIA");
-        
-        Bolsista bolsista = new Bolsista(nome, email, cargo, matricula, curso, new ArrayList<>(), relatorioBIA);
+        String siape = request.getParameter("siape");
+
+        Professor professor = new Professor(nome, email, siape);
         try {
-            bolsistaDAO.adicionarBolsista(bolsista);
+            professorDAO.adicionarProfessor(professor);
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        response.sendRedirect("BolsistaController");
+        response.sendRedirect("ProfessorController");
     }
 }

@@ -1,0 +1,51 @@
+package models.repository;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import models.entity.Professor;
+
+public class ProfessorDAO {
+    private Connection connection;
+
+    public ProfessorDAO() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void adicionarProfessor(Professor professor) throws SQLException {
+        String sql = "INSERT INTO professores (nome, email, siape) VALUES (?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, professor.getNome());
+            statement.setString(2, professor.getEmail());
+            statement.setString(3, professor.getSiape());
+            statement.executeUpdate();
+        }
+    }
+
+    public List<Professor> listarProfessores() throws SQLException {
+        List<Professor> professores = new ArrayList<>();
+        String sql = "SELECT * FROM professores";
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
+            while (resultSet.next()) {
+                String nome = resultSet.getString("nome");
+                String email = resultSet.getString("email");
+                String siape = resultSet.getString("siape");
+                Professor professor = new Professor(nome, email, siape);
+                professores.add(professor);
+            }
+        }
+        return professores;
+    }
+}

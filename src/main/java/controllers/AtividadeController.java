@@ -3,7 +3,7 @@ package controllers;
 import models.entity.Atividade;
 import models.entity.AtividadeComplexidade;
 import models.entity.AtividadeStatus;
-import models.repository.AtividadeDAO;
+import models.repository.AtividadesDAO;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,11 +18,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/AtividadeController")
 public class AtividadeController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-    private AtividadeDAO atividadeDAO;
+    private AtividadesDAO atividadeDAO;
 
     public AtividadeController() {
         super();
-        this.atividadeDAO = new AtividadeDAO();
+        this.atividadeDAO = new AtividadesDAO();
     }
 
     @Override
