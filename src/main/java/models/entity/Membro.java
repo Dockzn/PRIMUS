@@ -1,8 +1,13 @@
 package models.entity;
 import java.util.List;
 
-//depois ver a questão do membro que ele só pode ser um aluno
 public class Membro extends Aluno {
+
+/**
+ * A classe Membro herda atributos da classe Aluno que são importantes para o sistema. Embora Membro não possua métodos próprios, 
+ * ele tem acesso a maioria dos métodos de outras classes, permitindo executar diversas funções no site utilizando outras classes, 
+ * como a classe Atividade, por exemplo.
+ */
 
     //ATRIBUTOS//
     private List<Atividade> atividades;

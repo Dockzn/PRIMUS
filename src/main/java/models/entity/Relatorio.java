@@ -1,11 +1,13 @@
 package models.entity;
 import java.util.Date;
 
+
 /**
- * Classe referente aos relatórios. Ex.: Tal e tal
- * 
- * @author Arthur
+ * A classe Relatorio será destinada aos Membros e Membros Bolsistas, permitindo que façam seus relatórios de atividades do projeto 
+ * e enviem ao Coordenador, para melhor controle de presença e participação no projeto. Isso inclui tanto relatórios normais quanto, 
+ * no caso dos Bolsistas, relatórios BIA.
  */
+
 public class Relatorio {
 
     //ATRIBUTOS//

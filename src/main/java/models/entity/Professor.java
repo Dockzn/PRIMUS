@@ -1,6 +1,11 @@
 package models.entity;
 
 public class Professor {
+
+/**
+ * A classe Professor é responsável por disponibilizar apenas os atributos que são importantes para o sistema à classe Coordenador.
+ */
+
     // ATRIBUTOS //
     private String nome;
     private String email;

@@ -3,8 +3,14 @@ import java.sql.Date;
 import java.util.List;
 
 public class Documento {
+    
+/**
+ * A classe Documento é responsável por receber arquivos anexados, enviados por Membros e Coordenadores, e posteriormente guardá-los 
+ * na classe Documentação.
+ */
+
     //ATRIBUTOS//
-    private String descricao, arquivos; // FALAR COM MARCOS SOBRE ESSE ATRIBUTO criar lista de files
+    private String descricao, arquivos; 
     private Date dataPublicacao;
     private String membroResponsavel;
     private List<Membro> historico;

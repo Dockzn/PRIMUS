@@ -1,6 +1,13 @@
 package models.entity;
 
 public class Sala {
+
+/**
+ * A classe Sala é responsável por armazenar uma String contendo o local da sala que foi reservada para atividades do Projeto.
+ * 
+ * Obs: A reserva da sala é de responsabilidade da UFC.
+ */
+
     /*ATRIBUTOS*/
     private String local;
     

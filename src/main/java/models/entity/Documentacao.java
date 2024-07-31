@@ -3,10 +3,13 @@ package models.entity;
 import java.util.List;
 
 public class Documentacao {
-    //ATRIBUTOS//
-    /** 
-     * COmentar sobre as classes
-     */
+
+/** 
+ * A classe Documentação representa uma seção reservada do site destinada a guardar arquivos, documentos, artigos e afins recebidos 
+ * da classe Documento. Coordenadores e Membros têm acesso para visualizá-la, mas apenas Coordenadores têm todas as permissões para editá-la.
+ */
+
+     //ATRIBUTOS//
     private List<Documento> documentos;
 
     public Documentacao(List<Documento> documentos) {

@@ -6,6 +6,12 @@ import java.util.Date;
 
 public class ProjetoExtensao {
 
+/**
+ * A classe ProjetoExtensao é uma das mais importantes do nosso sistema, pois nela ocorrerá a maior parte do controle e organização 
+ * que nosso sistema promete. A maioria dos métodos dessa classe será utilizada pelos usuários (Coordenadores e Membros), mas 
+ * somente os Coordenadores terão acesso quase absoluto sobre ela.
+ */
+
     // ATRIBUTOS 
     private List<String> membros = new ArrayList<>(),
         relatorios = new ArrayList<>(),
