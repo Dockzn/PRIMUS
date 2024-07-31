@@ -1,6 +1,8 @@
 package models.entity;
-
-public enum AtividadeTipo {
+/*
+ * 
+ */
+public enum RelatorioTipo {
     BIA,
     PREX
 }

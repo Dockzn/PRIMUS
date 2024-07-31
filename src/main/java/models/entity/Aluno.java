@@ -1,5 +1,12 @@
 package models.entity;
 
+
+/*
+ * A classe Aluno é utilizada no site tanto para ser superclasse da classe Membro , como para fazer parte da lista de alunos cadastrados
+ * no site.O Coodenador pode selecionar um deles , por exemplo , para adicionar ao projeto. E o aluno não consegue acessar nenhum projeto 
+ * a menos que seja membro de um.
+ */
+
 public class Aluno {
     // Atributos
     private String nome, email, cargo, matricula, curso;

@@ -11,12 +11,12 @@ import java.util.Date;
 public class Relatorio {
 
     //ATRIBUTOS//
-    private AtividadeTipo tipo;
+    private RelatorioTipo tipo;
     private String observacoes, campoAnexo;
     private Date dataLimite;
 
     // Construtor
-    public Relatorio(AtividadeTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
+    public Relatorio(RelatorioTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
         this.tipo = tipo;
         this.observacoes = observacoes;
         this.campoAnexo = campoAnexo;
@@ -24,7 +24,7 @@ public class Relatorio {
     }
 
     // Getters e Setters
-    public AtividadeTipo getTipo() {
+    public RelatorioTipo getTipo() {
         return tipo;
     }
 
@@ -34,7 +34,7 @@ public class Relatorio {
      * 
      * Legal e legal
      */
-    public void setTipo(AtividadeTipo tipo) {
+    public void setTipo(RelatorioTipo tipo) {
         this.tipo = tipo;
     }
 

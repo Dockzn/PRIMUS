@@ -1,5 +1,9 @@
 package models.entity;
-
+/*
+ * Enum responsável por guardar o status da Atividade
+ * 
+ * 
+ */
 public enum AtividadeStatus {
     AFAZER(3),
     FAZENDO(2),

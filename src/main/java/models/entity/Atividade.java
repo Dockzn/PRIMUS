@@ -1,10 +1,19 @@
 package models.entity;
 import java.time.LocalDate;
 
+/*
+ * Essa classe está exposta no site pelo botão de criar a atividade , e quando for clicado , irá abrir uma pop-up da atividade , onde será possível preencher todos os atributos de uma atividade 
+ * (Nome, responsavel, comentario, tags(representa que tipo de atividade ele está realizando , para oferecer maior rastreabilidade das atividades do projeto), sala, data de criação, complexidade , horas, horas cumpridas e status).Quando a atividade for criada e tiver seus atributos preenchidos , ela irá para uma esteira Kanbam , onde poderá ser visualizada por todos do projeto. Será possível também sair da atividade,
+ * e a edição será automática ao entrar na atividade que estará na Esteira Kanbam do projeto. A edição será permitida pelos Coordenadores e Membros. 
+ */
+
+
+
+
 public class Atividade {
     //ATRIBUTOS
     private String nome, responsavel, comentario, tags, sala;
-    private LocalDate dataCriacao = LocalDate.now(); // NECESSACARIO CRIAR CLASSE DE TAG PARA SER POSSIVEL TER UMA LISTA DE TAGS COMO ATRIBUTO DESTA CLASSE
+    private LocalDate dataCriacao = LocalDate.now();
     private AtividadeComplexidade complexidade;
     private int horas, horasCumpridas;
     private AtividadeStatus status;

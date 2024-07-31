@@ -1,6 +1,13 @@
 package models.entity;
 import java.util.List;
 
+/*
+ * É uma classe que faz herança à classe membro , onde ele tem como atributo a mais o relatório BIA , entregue uma vez ao mês.
+ * Tendo todas as permissões de Membro do Projeto.
+ */
+
+
+
 //virar atributo
 public class Bolsista extends Membro {
 

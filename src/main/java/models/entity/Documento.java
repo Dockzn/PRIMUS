@@ -10,10 +10,13 @@ public class Documento {
  */
 
     //ATRIBUTOS//
-    private String descricao, arquivos; 
+    private String descricao, arquivos; //CRIAR CLASSE ARQUIVO NO JAVA PARA RECEBER ANEXOS
     private Date dataPublicacao;
     private String membroResponsavel;
     private List<Membro> historico;
+
+
+
     
     //CONSTRUTOR//
     public Documento(String descricao, String arquivos, Date dataPublicacao, String membroResponsavel,List<Membro> historico) {
