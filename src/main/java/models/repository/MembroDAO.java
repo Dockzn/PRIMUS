@@ -14,6 +14,10 @@ import models.entity.Membro;
 public class MembroDAO {
     private Connection connection;
 
+    /**
+     * 
+     * Inicializa a conexão com o banco de dados.
+     */
     public MembroDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -23,6 +27,11 @@ public class MembroDAO {
         }
     }
 
+    /**
+     * Adiciona um novo membro ao banco de dados.
+     * @param membro O membro a ser adicionado.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public void adicionarMembro(Membro membro) throws SQLException {
         String sql = "INSERT INTO membros (nome, email, cargo, matricula, curso) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -35,6 +44,11 @@ public class MembroDAO {
         }
     }
 
+    /**
+     * Lista todos os membros cadastrados no banco de dados.
+     * @return Uma lista de todos os membros.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public List<Membro> listarMembros() throws SQLException {
         List<Membro> membros = new ArrayList<>();
         String sql = "SELECT * FROM membros";
@@ -46,13 +60,19 @@ public class MembroDAO {
                 String cargo = resultSet.getString("cargo");
                 String matricula = resultSet.getString("matricula");
                 String curso = resultSet.getString("curso");
-                Membro membro = new Membro(nome, email, cargo, matricula, curso, new ArrayList<>());
+                Membro membro = new Membro(nome, email, cargo, matricula, curso);
                 membros.add(membro);
             }
         }
         return membros;
     }
 
+    /**
+     * Busca um membro no banco de dados pelo seu ID.
+     * @param id O ID do membro a ser buscado.
+     * @return O membro correspondente ao ID fornecido, ou null se não encontrado.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public Membro buscarMembroPorId(int id) throws SQLException {
         Membro membro = null;
         String sql = "SELECT * FROM membros WHERE id = ?";
@@ -65,13 +85,18 @@ public class MembroDAO {
                     String cargo = resultSet.getString("cargo");
                     String matricula = resultSet.getString("matricula");
                     String curso = resultSet.getString("curso");
-                    membro = new Membro(nome, email, cargo, matricula, curso, new ArrayList<>());
+                    membro = new Membro(nome, email, cargo, matricula, curso);
                 }
             }
         }
         return membro;
     }
 
+    /**
+     * Atualiza os dados de um membro no banco de dados.
+     * @param membro O membro cujos dados serão atualizados.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public void atualizarMembro(Membro membro) throws SQLException {
         String sql = "UPDATE membros SET nome = ?, email = ?, cargo = ?, matricula = ?, curso = ? WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -84,6 +109,11 @@ public class MembroDAO {
         }
     }
 
+    /**
+     * Deleta um membro do banco de dados pelo seu ID.
+     * @param id O ID do membro a ser deletado.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public void deletarMembro(int id) throws SQLException {
         String sql = "DELETE FROM membros WHERE id = ?";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {

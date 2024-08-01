@@ -16,9 +16,11 @@ import models.entity.AtividadeComplexidade;
 import models.entity.AtividadeStatus;
 
 public class AtividadesDAO {
+    
     private Connection connection;
 
     public AtividadesDAO() {
+        // Configurar a conexão com o banco de dados
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
@@ -27,6 +29,12 @@ public class AtividadesDAO {
         }
     }
 
+    /**
+     * Adiciona uma nova atividade no banco de dados.
+     * 
+     * @param atividade Objeto Atividade contendo os dados a serem inseridos.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public void adicionarAtividade(Atividade atividade) throws SQLException {
         String sql = "INSERT INTO atividades (nome, responsavel, comentario, tags, sala, dataCriacao, complexidade, horas, horasCumpridas, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -44,6 +52,12 @@ public class AtividadesDAO {
         }
     }
 
+    /**
+     * Lista todas as atividades presentes no banco de dados.
+     * 
+     * @return Uma lista de objetos Atividade.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
     public List<Atividade> listarAtividades() throws SQLException {
         List<Atividade> atividades = new ArrayList<>();
         String sql = "SELECT * FROM atividades";
@@ -66,5 +80,25 @@ public class AtividadesDAO {
             }
         }
         return atividades;
+    }
+
+    /**
+     * Exclui uma atividade do banco de dados.
+     * 
+     * @param atividade Objeto Atividade a ser excluído.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
+    public void excluirAtividade(Atividade atividade) throws SQLException {
+        /* Ainda vai ser implementado */
+    }
+
+    /**
+     * Edita os dados de uma atividade existente no banco de dados.
+     * 
+     * @param atividade Objeto Atividade contendo os dados atualizados.
+     * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
+     */
+    public void editarAtividade(Atividade atividade) throws SQLException {
+        /* Ainda vai ser implementado */
     }
 }

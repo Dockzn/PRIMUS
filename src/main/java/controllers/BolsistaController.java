@@ -1,6 +1,7 @@
 package controllers;
 
 import models.repository.BolsistaDAO;
+import models.entity.Bolsista;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,7 +24,7 @@ public class BolsistaController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<BolsistaDAO> bolsistas = null;
+        List<Bolsista> bolsistas = null;
         try {
             bolsistas = bolsistaDAO.listarBolsistas();
         } catch (SQLException e) {
@@ -42,7 +43,7 @@ public class BolsistaController extends HttpServlet {
         String curso = request.getParameter("curso");
         String relatorioBIA = request.getParameter("relatorioBIA");
         
-        Bolsista bolsista = new Bolsista(nome, email, cargo, matricula, curso, new ArrayList<>(), relatorioBIA);
+        Bolsista bolsista = new Bolsista(nome, email, cargo, matricula, curso, relatorioBIA);
         try {
             bolsistaDAO.adicionarBolsista(bolsista);
         } catch (SQLException e) {

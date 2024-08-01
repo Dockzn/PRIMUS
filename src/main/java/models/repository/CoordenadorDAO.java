@@ -1,7 +1,10 @@
 package models.repository;
 import java.sql.SQLException;
+import java.util.List;
+
 import models.entity.Documento;
 import models.entity.Atividade;
+import models.entity.Coordenador;
 import models.entity.Membro;
 import models.entity.ProjetoExtensao;
 import models.entity.Relatorio;
@@ -9,86 +12,50 @@ import models.entity.Noticia;;
 
 public class CoordenadorDAO {
 
-    public void cadastrarMembro(Membro membro) throws SQLException {
+    /**
+     * Busca um coordenador no sistema pelo seu SIAPE.
+     * @param siape O SIAPE do coordenador a ser buscado.
+     * @return O coordenador correspondente ao SIAPE fornecido, ou null se não encontrado.
+     */
+    public Coordenador buscarCoordenadorPorSiape(String siape) {
+        return null;
+    }
     
-    }
-    public void lerMembro(Membro membro) throws SQLException{
-    
-    }
-    
-    public void editarMembro(Membro membro) throws SQLException{
-    
-    }
-
-    public void removerMembro(Membro membro) throws SQLException{
-    
+    /**
+     * Lista todos os coordenadores cadastrados no sistema.
+     * @return Uma lista de todos os coordenadores.
+     * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
+     */
+    public List<Coordenador> listarCoordenadores() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'listarCoordenadores'");
     }
 
-    public void cadastrarProjeto(ProjetoExtensao projeto) throws SQLException{
-
+    /**
+     * Adiciona um novo coordenador ao sistema.
+     * @param coordenador O coordenador a ser adicionado.
+     * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
+     */
+    public void adicionarCoordenador(Coordenador coordenador) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'adicionarCoordenador'");
     }
 
-    public void editarProjeto(ProjetoExtensao projeto)throws SQLException{
-        
+    /**
+     * Remove um coordenador do sistema.
+     * @param coordenador O coordenador a ser removido.
+     * A ser implementado.
+     */
+    public void removerCoordenador(Coordenador coordenador){
+       /* A ser implementado */ 
     }
 
-    public void removerProjeto(ProjetoExtensao projeto)throws SQLException{
-        
-    }
-
-    public void criarAtividade(Atividade atividade)throws SQLException{
-        
-    }
-    public void lerAtividade(Atividade atividade)throws SQLException{
-        
-    }
-    public void excluirAtividade(Atividade atividade)throws SQLException{
-        
-    }
-    public void editarAtividade(Atividade atividade)throws SQLException{
-        
-    }
-    public void criarDocumento(Documento documento)throws SQLException{
-        
-    }
-    public void lerDocumento(Documento documento)throws SQLException{
-        
-    }
-    public void editarDocumento(Documento documento)throws SQLException{
-        
-    }
-    public void removerDocumento(Documento documento)throws SQLException{
-        
-    }
-    public void criarRelatorio(Relatorio relatorio)throws SQLException{
-        
-    }
-
-    public void lerRelatorio(Relatorio relatorio)throws SQLException{
-        
-    }
-
-    public void editarRelatorio(Relatorio relatorio)throws SQLException{
-        
-    }
-
-    public void removerRelatorio(Relatorio relatorio)throws SQLException{
-        
-    }
-
-    public void criarNoticia(Noticia noticia)throws SQLException{
-        
-    }
-
-    public void lerNoticia(Noticia noticia)throws SQLException{
-        
-    }
-
-    public void editarNoticia(Noticia noticia)throws SQLException{
-        
-    }
-
-    public void removerNoticia(Noticia noticia)throws SQLException{
-        
-    }
+    /**
+     * Edita os dados de um coordenador no sistema.
+     * @param coordenador O coordenador cujos dados serão editados.
+     * A ser implementado.
+     */
+     public void editarCoordenador(Coordenador coordenador){
+        /* A ser implementado */ 
+     }
 }

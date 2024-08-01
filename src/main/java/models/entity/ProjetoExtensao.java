@@ -4,27 +4,24 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class ProjetoExtensao {
-
 /**
  * A classe ProjetoExtensao é uma das mais importantes do nosso sistema, pois nela ocorrerá a maior parte do controle e organização 
  * que nosso sistema promete. A maioria dos métodos dessa classe será utilizada pelos usuários (Coordenadores e Membros), mas 
  * somente os Coordenadores terão acesso quase absoluto sobre ela.
  */
+public class ProjetoExtensao {
 
-    // ATRIBUTOS 
     private List<String> membros = new ArrayList<>(),
         relatorios = new ArrayList<>(),
-        noticia = new ArrayList<>(),
+        noticias = new ArrayList<>(),
         atividades = new ArrayList<>(),
         areasAtuacao = new ArrayList<>(),
-        salaProjeto = new ArrayList<>();
+        salas = new ArrayList<>();
     private Coordenador coordernador;
     private Date dataVigencia;
     private String titulo;
     private ProjetoEstado estado;
 
-    //CONSTRUTOR
     public ProjetoExtensao(Coordenador coordernador, Date dataVigencia, String titulo, ProjetoEstado estado) {
         this.coordernador = coordernador;
         this.dataVigencia = dataVigencia;
@@ -32,13 +29,12 @@ public class ProjetoExtensao {
         this.estado = estado;
     }
 
-    //GETTERS E SETTERS
     public List<String> getMembros() {
         return membros;
     }
 
     public void setMembros(List<String> membros) {
-        this.membros = membros;
+        if (membros != null) this.membros = membros;
     }
 
     public List<String> getRelatorios() {
@@ -46,15 +42,15 @@ public class ProjetoExtensao {
     }
 
     public void setRelatorios(List<String> relatorios) {
-        this.relatorios = relatorios;
+        if (relatorios != null) this.relatorios = relatorios;
     }
 
-    public List<String> getNoticia() {
-        return noticia;
+    public List<String> getNoticias() {
+        return noticias;
     }
 
-    public void setNoticia(List<String> noticia) {
-        this.noticia = noticia;
+    public void setNoticias(List<String> noticias) {
+        if (noticias != null) this.noticias = noticias;
     }
 
     public List<String> getAtividades() {
@@ -70,15 +66,15 @@ public class ProjetoExtensao {
     }
 
     public void setAreasAtuacao(List<String> areasAtuacao) {
-        this.areasAtuacao = areasAtuacao;
+        if (areasAtuacao != null) this.areasAtuacao = areasAtuacao;
     }
 
-    public List<String> getSalaProjeto() {
-        return salaProjeto;
+    public List<String> getSalas() {
+        return salas;
     }
 
-    public void setSalaProjeto(List<String> salaProjeto) {
-        this.salaProjeto = salaProjeto;
+    public void setSalas(List<String> salas) {
+        if (salas != null) this.salas = salas;
     }
 
     public Coordenador getCoordernador() {
@@ -86,7 +82,7 @@ public class ProjetoExtensao {
     }
 
     public void setCoordernador(Coordenador coordernador) {
-        this.coordernador = coordernador;
+        if (coordernador != null) this.coordernador = coordernador;
     }
 
     public Date getDataVigencia() {
@@ -94,7 +90,7 @@ public class ProjetoExtensao {
     }
 
     public void setDataVigencia(Date dataVigencia) {
-        this.dataVigencia = dataVigencia;
+        if (dataVigencia != null) this.dataVigencia = dataVigencia;
     }
 
     public String getTitulo() {
@@ -102,7 +98,7 @@ public class ProjetoExtensao {
     }
 
     public void setTitulo(String titulo) {
-        this.titulo = titulo;
+        if (titulo != null) this.titulo = titulo;
     }
 
     public ProjetoEstado getEstado() {
@@ -110,6 +106,6 @@ public class ProjetoExtensao {
     }
 
     public void setEstado(ProjetoEstado estado) {
-        this.estado = estado;
+        if (estado != null) this.estado = estado;
     }
 }

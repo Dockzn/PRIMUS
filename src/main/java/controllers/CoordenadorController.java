@@ -26,11 +26,7 @@ public class CoordenadorController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Coordenador> coordenadores = null;
-        try {
-            coordenadores = coordenadorDAO.listarCoordenadores();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        coordenadores = coordenadorDAO.listarCoordenadores();
         request.setAttribute("coordenadores", coordenadores);
         request.getRequestDispatcher("/views/list-coordenadores.jsp").forward(request, response);
     }
@@ -42,11 +38,7 @@ public class CoordenadorController extends HttpServlet {
         String siape = request.getParameter("siape");
 
         Coordenador coordenador = new Coordenador(nome, email, siape);
-        try {
-            coordenadorDAO.adicionarCoordenador(coordenador);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        coordenadorDAO.adicionarCoordenador(coordenador);
         response.sendRedirect("CoordenadorController");
     }
 }

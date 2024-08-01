@@ -38,7 +38,10 @@ public class MembroController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String nome = request.getParameter("nome");
         String email = request.getParameter("email");
-        Membro membro = new Membro();
+        String cargo = request.getParameter("cargo");
+        String matricula = request.getParameter("matricula");
+        String curso = request.getParameter("curso");
+        Membro membro = new Membro(nome, email, cargo, matricula, curso);
         membro.setNome(nome);
         membro.setEmail(email);
         try {
