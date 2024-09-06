@@ -19,21 +19,21 @@
    <children>
       <ImageView fitHeight="61.0" fitWidth="60.0" layoutX="1.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../../../../Downloads/_a49845d3-0c34-4c90-b17a-39b8e74aec21-removebg-preview%202.png" />
+            <Image url="@../../../../../../../../../Downloads/_a49845d3-0c34-4c90-b17a-39b8e74aec21-removebg-preview%202.png" />
          </image>
       </ImageView>
       <MenuButton fx:id="botaoMais" layoutX="484.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #2148c0;" text="Mais" textFill="WHITE">
         <items>
-            <MenuItem mnemonicParsing="false" text="Documentação" />
-          <MenuItem mnemonicParsing="false" text="Sobre o projeto" />
-          <MenuItem mnemonicParsing="false" text="Criar atividade" />
-            <MenuItem mnemonicParsing="false" text="Criar relatorio" />
+            <MenuItem mnemonicParsing="false" onAction="#irParaTelaDocumentacao" text="Documentação" />
+          <MenuItem mnemonicParsing="false" onAction="#irParaTelaMaisInfoProjeto" text="Sobre o projeto" />
+          <MenuItem mnemonicParsing="false" onAction="#IrParaTelaCriarAtividade" text="Criar atividade" />
+            <MenuItem mnemonicParsing="false" onAction="#irParaTelaCriarRelatorio" text="Criar relatorio" />
         </items>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </MenuButton>
-      <Button fx:id="botaoAtividades" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="193.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Atividades" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="botaoAtividades" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="193.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaDeAtividades" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Atividades" textAlignment="CENTER" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -45,12 +45,12 @@
             <Font name="Times New Roman" size="10.0" />
          </font>
       </TextArea>
-      <Button fx:id="botaoNoticias" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="306.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Notícias" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="botaoNoticias" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="306.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaDeNoticias" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Notícias" textAlignment="CENTER" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="botaoGeral" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="76.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Geral" textAlignment="CENTER" textFill="WHITE">
+      <Button fx:id="botaoGeral" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="76.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaPrincipalDoProjeto" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Geral" textAlignment="CENTER" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
