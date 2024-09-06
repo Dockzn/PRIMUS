@@ -11,7 +11,7 @@ import java.util.Date;
 public class Noticia {
 
     private String titulo, descricao;
-    private Date dataCriacao;
+    private Date dataCriacao; /*Deveria ser local date? */
     
     public Noticia(String titulo, String descricao) {
         this.titulo = titulo;

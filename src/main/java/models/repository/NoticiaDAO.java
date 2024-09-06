@@ -14,6 +14,7 @@ public class NoticiaDAO {
      */
     public void criarNoticia(Noticia noticia) throws SQLException {
         /* Ainda vai ser implementado */
+        /*Rever este DAO com Marcos */
     }
 
     /**

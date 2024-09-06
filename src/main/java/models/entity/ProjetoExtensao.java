@@ -11,7 +11,7 @@ import java.util.Date;
  */
 public class ProjetoExtensao {
 
-    private List<String> membros = new ArrayList<>(),
+    private List<String> membros = new ArrayList<>(), /*Deveria ser lista de membro? */
         relatorios = new ArrayList<>(),
         noticias = new ArrayList<>(),
         atividades = new ArrayList<>(),

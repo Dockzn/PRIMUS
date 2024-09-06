@@ -38,5 +38,6 @@ public class DocumentacaoDAO {
      */
     public void removerDocumento(Documento documento) throws SQLException {
         // Implementação a ser adicionada
+        //Exclui toda a sessão de documentos
     }
 }
