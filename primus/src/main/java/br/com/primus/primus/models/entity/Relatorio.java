@@ -9,15 +9,26 @@ import java.util.Date;
  */
 public class Relatorio {
 
+    private int id; // ID único para o relatório
     private RelatorioTipo tipo;
     private String observacoes, campoAnexo;
     private Date dataLimite;
 
-    public Relatorio(RelatorioTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
+    public Relatorio(int id, RelatorioTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
+        this.id = id;
         this.tipo = tipo;
         this.observacoes = observacoes;
         this.campoAnexo = campoAnexo;
         this.dataLimite = dataLimite;
+    }
+
+    // Getter e Setter para ID
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public RelatorioTipo getTipo() {
@@ -50,5 +61,11 @@ public class Relatorio {
 
     public void setDataLimite(Date dataLimite) {
         if (dataLimite != null) this.dataLimite = dataLimite;
+    }
+
+    @Override
+    public String toString() {
+        return "Relatorio [id=" + id + ", tipo=" + tipo + ", observacoes=" + observacoes + ", campoAnexo=" + campoAnexo
+                + ", dataLimite=" + dataLimite + "]";
     }
 }
