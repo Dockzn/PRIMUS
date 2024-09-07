@@ -1,18 +1,15 @@
-// package models.repository;
-
-// import java.sql.SQLException;
-
-// import models.entity.Noticia;
+// package br.com.primus.primus.models.repository;
+// import java.util.HashMap;
+// import java.util.Map;
 
 // public class NoticiaDAO {
 
 //     /**
 //      * Cria uma nova notícia no sistema.
 //      * @param noticia A notícia a ser criada.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
 //      * Ainda vai ser implementado.
 //      */
-//     public void criarNoticia(Noticia noticia) throws SQLException {
+//     public void criarNoticia(Noticia noticia){
 //         /* Ainda vai ser implementado */
 //     }
 
@@ -22,7 +19,7 @@
 //      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
 //      * Ainda vai ser implementado.
 //      */
-//     public void lerNoticia(Noticia noticia) throws SQLException {
+//     public void lerNoticia(Noticia noticia){
 //         /* Ainda vai ser implementado */
 //     }
 
@@ -32,7 +29,7 @@
 //      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
 //      * Ainda vai ser implementado.
 //      */
-//     public void editarNoticia(Noticia noticia) throws SQLException {
+//     public void editarNoticia(Noticia noticia){
 //         /* Ainda vai ser implementado */
 //     }
 
@@ -42,7 +39,7 @@
 //      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
 //      * Ainda vai ser implementado.
 //      */
-//     public void removerNoticia(Noticia noticia) throws SQLException {
+//     public void removerNoticia(Noticia noticia) {
 //         /* Ainda vai ser implementado */
 //     }
 // }
