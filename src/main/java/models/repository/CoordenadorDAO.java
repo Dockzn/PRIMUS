@@ -1,14 +1,8 @@
 package models.repository;
-import java.sql.SQLException;
 import java.util.List;
 
-import models.entity.Documento;
-import models.entity.Atividade;
 import models.entity.Coordenador;
-import models.entity.Membro;
-import models.entity.ProjetoExtensao;
-import models.entity.Relatorio;
-import models.entity.Noticia;;
+;
 
 public class CoordenadorDAO {
 
@@ -27,7 +21,6 @@ public class CoordenadorDAO {
      * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
      */
     public List<Coordenador> listarCoordenadores() {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'listarCoordenadores'");
     }
 
@@ -37,7 +30,6 @@ public class CoordenadorDAO {
      * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
      */
     public void adicionarCoordenador(Coordenador coordenador) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'adicionarCoordenador'");
     }
 

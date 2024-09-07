@@ -1,11 +1,17 @@
-package controllers;
+package br.com.primus.primus;
 
-import models.repository.LoginDAO;
+import java.io.IOException;
+
+import br.com.primus.primus.models.repository.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class LoginController {
 
@@ -41,20 +47,18 @@ public class LoginController {
         alerta.showAndWait();
     }
 
-
     @FXML
-private void abrirTelaCadastro(ActionEvent event) {
-    try {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/cadastro.fxml"));
-        Parent root = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.show();
-        // Fechar a tela de login, se necessário
-        // ((Stage) botaoLogin.getScene().getWindow()).close();
-    } catch (IOException e) {
-        e.printStackTrace();
+    private void abrirTelaCadastro(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/cadastro.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+            // Fechar a tela de login, se necessário
+            // ((Stage) botaoLogin.getScene().getWindow()).close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-}
-
 }
