@@ -28,10 +28,10 @@ public class LoginController {
 
         if (loginValido) {
             mostrarAlerta("Login realizado com sucesso!", Alert.AlertType.INFORMATION);
-            //redirecionar para outra tela
+            // redirecionar para outra tela
         } else {
             mostrarAlerta("Matrícula ou senha inválidos!", Alert.AlertType.ERROR);
-            //abrir a tela de cadastro
+            // abrir a tela de cadastro
         }
     }
 
@@ -40,4 +40,21 @@ public class LoginController {
         alerta.setContentText(mensagem);
         alerta.showAndWait();
     }
+
+
+    @FXML
+private void abrirTelaCadastro(ActionEvent event) {
+    try {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/cadastro.fxml"));
+        Parent root = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+        // Fechar a tela de login, se necessário
+        // ((Stage) botaoLogin.getScene().getWindow()).close();
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 }
