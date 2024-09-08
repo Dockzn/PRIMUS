@@ -49,7 +49,7 @@ public class MenuController {
 
     @FXML
     void IrParaTelaCriarAtividade(ActionEvent event) {
-        trocarTela("/path/to/criarAtividade.fxml");
+        trocarTela("CriarAtividadeView.fxml");
     }
 
     @FXML
@@ -59,7 +59,7 @@ public class MenuController {
 
     @FXML
     void irParaTelaDeAtividades(ActionEvent event) {
-        trocarTela("/path/to/telaAtividades.fxml");
+        trocarTela("CriarAtividadeView.fxml");
     }
 
     @FXML
@@ -79,7 +79,7 @@ public class MenuController {
 
     @FXML
     void irParaTelaPrincipalDoProjeto(ActionEvent event) {
-        trocarTela("/path/to/telaPrincipalDoProjeto.fxml");
+        trocarTela("path/to/telaMaisInfoProjeto.fxml");
     }
 
     private void trocarTela(String fxml) {
