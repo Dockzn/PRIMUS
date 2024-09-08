@@ -9,14 +9,19 @@ import java.time.LocalDate;
  */
 public class Atividade {
 
+    private static int contadorId = 0; // Variável estática para contar o ID
+
+    private int id; // Novo campo ID
     private String nome, responsavel, comentario, tags, sala;
     private final LocalDate dataCriacao;
     private AtividadeComplexidade complexidade;
     private int horas, horasCumpridas;
     private AtividadeStatus status;
+
     
     public Atividade(String nome, String responsavel, String comentario, String tags, String sala,
             LocalDate dataCriacao, AtividadeComplexidade complexidade, int horas, AtividadeStatus status) {
+        this.id = ++contadorId; // Atribui um ID único incremental
         this.nome = nome;
         this.responsavel = responsavel;
         this.comentario = comentario;
@@ -26,6 +31,11 @@ public class Atividade {
         this.complexidade = complexidade;
         this.horas = horas;
         this.status = status;
+    }
+
+    // Getter para o ID
+    public int getId() {
+        return id;
     }
 
     public String getNome() {
