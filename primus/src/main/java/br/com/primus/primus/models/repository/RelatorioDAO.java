@@ -12,40 +12,61 @@ public class RelatorioDAO {
     private int nextId = 1; // Para gerar IDs únicos para os relatórios
 
     /**
-     * Envia Relatório a ser enviado seja para o BIA ou para o PREX
+     * Envia um relatório para ser adicionado ao armazenamento.
+     * 
+     * @param relatorio O relatório a ser enviado.
      */
     public void enviarRelatorio(Relatorio relatorio) {
-        relatorio.setId(nextId++);
-        relatorios.put(relatorio.getId(), relatorio);
-        System.out.println("Relatório enviado: " + relatorio);
+        if (relatorio != null) {
+            relatorio.setId(nextId++);
+            relatorios.put(relatorio.getId(), relatorio);
+            System.out.println("Relatório enviado: " + relatorio);
+        } else {
+            System.out.println("Relatório é nulo e não pode ser enviado.");
+        }
     }
 
     /**
-     * Atualiza Relatório a ser enviado seja para o BIA ou para o PREX
+     * Atualiza um relatório existente no armazenamento.
+     * 
+     * @param relatorio O relatório com as atualizações.
      */
     public void atualizarRelatorio(Relatorio relatorio) {
-        if (relatorios.containsKey(relatorio.getId())) {
-            relatorios.put(relatorio.getId(), relatorio);
-            System.out.println("Relatório atualizado: " + relatorio);
+        if (relatorio != null) {
+            if (relatorios.containsKey(relatorio.getId())) {
+                relatorios.put(relatorio.getId(), relatorio);
+                System.out.println("Relatório atualizado: " + relatorio);
+            } else {
+                System.out.println("Relatório não encontrado para atualização: " + relatorio);
+            }
         } else {
-            System.out.println("Relatório não encontrado para atualização: " + relatorio);
+            System.out.println("Relatório é nulo e não pode ser atualizado.");
         }
     }
 
     /**
-     * Cancela Relatório a ser enviado seja para o BIA ou para o PREX
+     * Cancela um relatório removendo-o do armazenamento.
+     * 
+     * @param relatorio O relatório a ser cancelado.
      */
     public void cancelarRelatorio(Relatorio relatorio) {
-        if (relatorios.containsKey(relatorio.getId())) {
-            relatorios.remove(relatorio.getId());
-            System.out.println("Relatório cancelado: " + relatorio);
+        if (relatorio != null) {
+            if (relatorios.containsKey(relatorio.getId())) {
+                relatorios.remove(relatorio.getId());
+                System.out.println("Relatório cancelado: " + relatorio);
+            } else {
+                System.out.println("Relatório não encontrado para cancelamento: " + relatorio);
+            }
         } else {
-            System.out.println("Relatório não encontrado para cancelamento: " + relatorio);
+            System.out.println("Relatório é nulo e não pode ser cancelado.");
         }
     }
 
     /**
-     * Lê Relatório a ser enviado seja para o BIA ou para o PREX
+     * Lê um relatório pelo ID.
+     * 
+     * @param id O ID do relatório a ser lido.
+     * @return O relatório correspondente ao ID fornecido.
      */
     public Relatorio lerRelatorio(int id) {
         Relatorio relatorio = relatorios.get(id);

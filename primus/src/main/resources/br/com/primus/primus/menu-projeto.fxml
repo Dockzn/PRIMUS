@@ -66,7 +66,7 @@
             <Image url="@icons/your-icon.png" /> <!-- Substitua pelo caminho do seu ícone -->
          </image>
       </ImageView>
-      <Label fx:id="labelNomeProjeto" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="82.0" layoutY="80.0" prefHeight="93.0" prefWidth="283.0" text="Nome do Projeto Exemplo" textAlignment="CENTER" textFill="WHITE">
+      <Label fx:id="labelNomeProjeto" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="82.0" layoutY="80.0" prefHeight="93.0" prefWidth="283.0" text="NERDS" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>

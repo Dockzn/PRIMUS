@@ -1,19 +1,21 @@
 package br.com.primus.primus.models.entity;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-/**
- * A classe Relatorio será destinada aos Membros e Membros Bolsistas, permitindo que façam seus relatórios de atividades do projeto 
- * e enviem ao Coordenador, para melhor controle de presença e participação no projeto. Isso inclui tanto relatórios normais quanto, 
- * no caso dos Bolsistas, relatórios BIA.
- */
 public class Relatorio {
-
-    private int id; // ID único para o relatório
+    private int id;
     private RelatorioTipo tipo;
-    private String observacoes, campoAnexo;
+    private String observacoes;
+    private String campoAnexo;
     private Date dataLimite;
 
+    // Construtor padrão
+    public Relatorio() {
+    }
+
+    // Construtor completo
     public Relatorio(int id, RelatorioTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
         this.id = id;
         this.tipo = tipo;
@@ -22,7 +24,7 @@ public class Relatorio {
         this.dataLimite = dataLimite;
     }
 
-    // Getter e Setter para ID
+    // Getters e Setters
     public int getId() {
         return id;
     }
@@ -36,7 +38,7 @@ public class Relatorio {
     }
 
     public void setTipo(RelatorioTipo tipo) {
-        if (tipo != null) this.tipo = tipo;
+        this.tipo = tipo;
     }
 
     public String getObservacoes() {
@@ -44,7 +46,7 @@ public class Relatorio {
     }
 
     public void setObservacoes(String observacoes) {
-        if (observacoes != null) this.observacoes = observacoes;
+        this.observacoes = observacoes;
     }
 
     public String getCampoAnexo() {
@@ -52,7 +54,7 @@ public class Relatorio {
     }
 
     public void setCampoAnexo(String campoAnexo) {
-        if (campoAnexo != null) this.campoAnexo = campoAnexo;
+        this.campoAnexo = campoAnexo;
     }
 
     public Date getDataLimite() {
@@ -60,7 +62,28 @@ public class Relatorio {
     }
 
     public void setDataLimite(Date dataLimite) {
-        if (dataLimite != null) this.dataLimite = dataLimite;
+        this.dataLimite = dataLimite;
+    }
+
+    // Converte o objeto Relatorio para um HashMap
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("id", id);
+        map.put("tipo", tipo);
+        map.put("observacoes", observacoes);
+        map.put("campoAnexo", campoAnexo);
+        map.put("dataLimite", dataLimite);
+        return map;
+    }
+
+    // Cria um objeto Relatorio a partir de um HashMap
+    public static Relatorio fromMap(Map<String, Object> map) {
+        int id = (int) map.get("id");
+        RelatorioTipo tipo = (RelatorioTipo) map.get("tipo");
+        String observacoes = (String) map.get("observacoes");
+        String campoAnexo = (String) map.get("campoAnexo");
+        Date dataLimite = (Date) map.get("dataLimite");
+        return new Relatorio(id, tipo, observacoes, campoAnexo, dataLimite);
     }
 
     @Override

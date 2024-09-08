@@ -6,12 +6,14 @@ import br.com.primus.primus.models.repository.LoginDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.scene.input.KeyCode;
 
 public class LoginController {
 
@@ -25,6 +27,23 @@ public class LoginController {
     private TextField campoSenha;
 
     @FXML
+    void initialize() {
+        // Configura o evento de pressionar Enter para o campo de matrícula
+        campoMatricula.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                campoSenha.requestFocus(); // Move o foco para o campo de senha
+            }
+        });
+
+        // Configura o evento de pressionar Enter para o campo de senha
+        campoSenha.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                realizarLogin(null); // Executa o login quando Enter é pressionado
+            }
+        });
+    }
+
+    @FXML
     void realizarLogin(ActionEvent event) {
         String matricula = campoMatricula.getText();
         String senha = campoSenha.getText();
@@ -33,32 +52,39 @@ public class LoginController {
         boolean loginValido = loginDAO.verificarCredenciais(matricula, senha);
 
         if (loginValido) {
-            mostrarAlerta("Login realizado com sucesso!", Alert.AlertType.INFORMATION);
-            // redirecionar para outra tela
+            mostrarAlerta("Login realizado com sucesso!", AlertType.INFORMATION, "menu-projeto.fxml");
         } else {
-            mostrarAlerta("Matrícula ou senha inválidos!", Alert.AlertType.ERROR);
-            // abrir a tela de cadastro
+            mostrarAlerta("Matrícula ou senha inválidos!", AlertType.ERROR, null);
         }
     }
 
-    private void mostrarAlerta(String mensagem, Alert.AlertType tipo) {
+    private void mostrarAlerta(String mensagem, AlertType tipo, String proximaTelaFXML) {
         Alert alerta = new Alert(tipo);
         alerta.setContentText(mensagem);
-        alerta.showAndWait();
+
+        alerta.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.OK && proximaTelaFXML != null) {
+                mudarTela("menu-projeto.fxml");
+            }
+        });
     }
 
-    @FXML
-    private void abrirTelaCadastro(ActionEvent event) {
+    private void mudarTela(String fxml) {
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/path/to/cadastro.fxml"));
-            Parent root = fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.show();
-            // Fechar a tela de login, se necessário
-            // ((Stage) botaoLogin.getScene().getWindow()).close();
+            Stage stage = (Stage) botaoLogin.getScene().getWindow();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Scene novaCena = new Scene(loader.load());
+            stage.setScene(novaCena);
         } catch (IOException e) {
-            e.printStackTrace();
+            exibirErroCarregamentoTela(e);
         }
+    }
+
+    private void exibirErroCarregamentoTela(IOException e) {
+        Alert erroAlerta = new Alert(AlertType.ERROR);
+        erroAlerta.setTitle("Erro ao Carregar Tela");
+        erroAlerta.setHeaderText("Não foi possível carregar a nova tela.");
+        erroAlerta.setContentText("Ocorreu um erro: " + e.getMessage());
+        erroAlerta.showAndWait();
     }
 }

@@ -1,13 +1,19 @@
 package br.com.primus.primus;
 
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.ImageView; // Atualize para ImageView
+import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class MenuController {
 
@@ -24,7 +30,7 @@ public class MenuController {
     private Button botaoNoticias;
 
     @FXML
-    private ImageView iconeProjeto; // Atualize para ImageView
+    private ImageView iconeProjeto;
 
     @FXML
     private Label labelNomeProjeto;
@@ -41,26 +47,49 @@ public class MenuController {
     @FXML
     private TextField textFieldAtividade3;
 
- @FXML
- void IrParaTelaCriarAtividade(ActionEvent event) {
- }
- @FXML
- void irParaTelaCriarRelatorio(ActionEvent event) {
- }
- @FXML
- void irParaTelaDeAtividades(ActionEvent event) {
- }
- @FXML
- void irParaTelaDeNoticias(ActionEvent event) {
- }
- @FXML
- void irParaTelaDocumentacao(ActionEvent event) {
- }
- @FXML
- void irParaTelaMaisInfoProjeto(ActionEvent event) {
- }
- @FXML
- void irParaTelaPrincipalDoProjeto(ActionEvent event) {
- }
+    @FXML
+    void IrParaTelaCriarAtividade(ActionEvent event) {
+        trocarTela("/path/to/criarAtividade.fxml");
+    }
 
+    @FXML
+    void irParaTelaCriarRelatorio(ActionEvent event) {
+        trocarTela("criacao-de-relatorio.fxml");
+    }
+
+    @FXML
+    void irParaTelaDeAtividades(ActionEvent event) {
+        trocarTela("/path/to/telaAtividades.fxml");
+    }
+
+    @FXML
+    void irParaTelaDeNoticias(ActionEvent event) {
+        trocarTela("/path/to/telaNoticias.fxml");
+    }
+
+    @FXML
+    void irParaTelaDocumentacao(ActionEvent event) {
+        trocarTela("/path/to/telaDocumentacao.fxml");
+    }
+
+    @FXML
+    void irParaTelaMaisInfoProjeto(ActionEvent event) {
+        trocarTela("/path/to/telaMaisInfoProjeto.fxml");
+    }
+
+    @FXML
+    void irParaTelaPrincipalDoProjeto(ActionEvent event) {
+        trocarTela("/path/to/telaPrincipalDoProjeto.fxml");
+    }
+
+    private void trocarTela(String fxml) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+            Stage stage = (Stage) botaoGeral.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
