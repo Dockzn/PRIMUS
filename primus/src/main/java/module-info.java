@@ -11,6 +11,7 @@ module br.com.primus.primus {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires javafx.graphics;
+    requires javafx.base;
 
     opens br.com.primus.primus to javafx.fxml;
     exports br.com.primus.primus;
