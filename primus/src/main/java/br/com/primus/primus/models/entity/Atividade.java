@@ -2,34 +2,35 @@ package br.com.primus.primus.models.entity;
 
 import java.time.LocalDate;
 
-/**
- * Essa classe está exposta no site pelo botão de criar a atividade , e quando for clicado , irá abrir uma pop-up da atividade , onde será possível preencher todos os atributos de uma atividade 
- * (Nome, responsavel, comentario, tags(representa que tipo de atividade ele está realizando , para oferecer maior rastreabilidade das atividades do projeto), sala, data de criação, complexidade , horas, horas cumpridas e status).Quando a atividade for criada e tiver seus atributos preenchidos , ela irá para uma esteira Kanbam , onde poderá ser visualizada por todos do projeto. Será possível também sair da atividade,
- * e a edição será automática ao entrar na atividade que estará na Esteira Kanbam do projeto. A edição será permitida pelos Coordenadores e Membros. 
- */
 public class Atividade {
 
+    private static int contadorId = 0; // Variável estática para contar o ID
+
+    private int id; // Novo campo ID
     private String nome, responsavel, comentario, tags, sala;
-    private int id;
     private final LocalDate dataCriacao;
     private AtividadeComplexidade complexidade;
     private int horas, horasCumpridas;
     private AtividadeStatus status;
-    
-    public Atividade(int id,String nome, String responsavel, String comentario, String tags, String sala,
+
+    public Atividade(String nome, String responsavel, String comentario, String tags, String sala,
             LocalDate dataCriacao, AtividadeComplexidade complexidade, int horas, AtividadeStatus status) {
-        this.id = id;
+        this.id = ++contadorId; // Atribui um ID único incremental
         this.nome = nome;
         this.responsavel = responsavel;
         this.comentario = comentario;
         this.tags = tags;
         this.sala = sala;
-        this.dataCriacao = LocalDate.now();
+        this.dataCriacao = dataCriacao != null ? dataCriacao : LocalDate.now();
         this.complexidade = complexidade;
         this.horas = horas;
         this.status = status;
     }
 
+    // Getter para o ID
+    public int getId() {
+        return id;
+    }
 
     public String getNome() {
         return nome;
@@ -41,24 +42,6 @@ public class Atividade {
 
     public String getResponsavel() {
         return responsavel;
-    }
-
-    public int getId() {
-        return id;
-    }
-    public void setId(int id) {
-        if(id>=0){
-            this.id = id;
-        }
-    }
-
-
-    public int getHorasCumpridas() {
-        return horasCumpridas;
-    }
-
-    public void setHorasCumpridas(int horasCumpridas) {
-        if (horasCumpridas < 0) this.horasCumpridas = horasCumpridas;
     }
 
     public void setResponsavel(String responsavel) {
@@ -99,6 +82,14 @@ public class Atividade {
 
     public void setHoras(int horas) {
         if (horas > 0) this.horas = horas;
+    }
+
+    public int getHorasCumpridas() {
+        return horasCumpridas;
+    }
+
+    public void setHorasCumpridas(int horasCumpridas) {
+        if (horasCumpridas >= 0) this.horasCumpridas = horasCumpridas;
     }
 
     public String getSala() {
