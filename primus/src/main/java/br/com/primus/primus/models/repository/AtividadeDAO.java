@@ -1,46 +1,38 @@
 package br.com.primus.primus.models.repository;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import br.com.primus.primus.models.entity.Atividade;
-import br.com.primus.primus.models.entity.AtividadeComplexidade;
-import br.com.primus.primus.models.entity.AtividadeStatus;
-import java.util.HashMap;
-import java.util.Map;
 
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class AtividadeDAO {
 
-    // Mapa para armazenar atividades com ID como chave
-    private Map<Integer, Atividade> atividades;
+    // Map to store the activities, where key is the activity ID and value is the Atividade object
+    private static Map<Integer, Atividade> atividades = new HashMap<>();
 
-    public AtividadeDAO() {
-        atividades = new HashMap<>();
-    }
 
-    // Método para adicionar uma atividade ao mapa
+    
+
+    // Method to add an activity
     public boolean adicionarAtividade(Atividade atividade) {
-        boolean isAdded = true;
-        
+        boolean isBoolean = true;
         if (atividade != null && !atividades.containsKey(atividade.getId())) {
-            atividades.put(atividade.getId(), atividade); // Adiciona ao map com o ID como chave
-        } else {
-            isAdded = false;
+            atividades.put(atividade.getId(), atividade); 
+
+        } 
+        else {
+            isBoolean = false;
         }
 
-        return isAdded;
+        return isBoolean;
     }
 
-    // Método para obter a atividade pelo ID
-    public Atividade getAtividadeById(int id) {
+    // Method to retrieve an activity by its ID
+    public Atividade getAtividade(int id) {
         return atividades.get(id);
     }
 
-    // Método para listar todas as atividades
+    // Method to list all activities
     public Map<Integer, Atividade> listarAtividades() {
         return atividades;
     }

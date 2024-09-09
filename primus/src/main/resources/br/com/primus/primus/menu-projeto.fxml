@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #171717;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.primus.primus.MenuController">
+   <children>
+      <ImageView fitHeight="61.0" fitWidth="60.0" layoutX="1.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/primus.png" />
+         </image>
+      </ImageView>
+      <MenuButton fx:id="botaoMais" layoutX="484.0" layoutY="21.0" mnemonicParsing="false" style="-fx-background-color: #2148c0;" text="Mais" textFill="WHITE">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#irParaTelaDocumentacao" text="Documentação" />
+            <MenuItem mnemonicParsing="false" onAction="#irParaTelaMaisInfoProjeto" text="Sobre o projeto" />
+            <MenuItem mnemonicParsing="false" onAction="#IrParaTelaCriarAtividade" text="Criar atividade" />
+            <MenuItem mnemonicParsing="false" onAction="#irParaTelaCriarRelatorio" text="Criar relatorio" />
+        </items>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </MenuButton>
+      <Button fx:id="botaoAtividades" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="193.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaDeAtividades" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Atividades" textAlignment="CENTER" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Line endX="-79.4000244140625" endY="226.69293212890625" layoutX="513.0" layoutY="183.0" startX="-79.4000244140625" startY="-183.0" stroke="WHITE" />
+      <Text fill="WHITE" layoutX="468.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimas Noticias" />
+      <TextArea fx:id="textAreUltimasNoticias" editable="false" layoutX="449.0" layoutY="114.0" prefHeight="122.0" prefWidth="137.0" text="04/09/2024 as 19:41&#10;Aviso:&#10;&#10;Java não presta&#10;" wrapText="true">
+         <font>
+            <Font name="Times New Roman" size="10.0" />
+         </font>
+      </TextArea>
+      <Button fx:id="botaoNoticias" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="306.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaDeNoticias" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Notícias" textAlignment="CENTER" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="botaoGeral" alignment="CENTER" contentDisplay="CENTER" ellipsisString="" layoutX="76.0" layoutY="20.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#irParaTelaPrincipalDoProjeto" prefHeight="30.0" prefWidth="84.0" style="-fx-border-radius: 20px; -fx-background-color: #100F0F;" text="Geral" textAlignment="CENTER" textFill="WHITE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Text fill="WHITE" layoutX="57.0" layoutY="209.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Atividades">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <ImageView fitHeight="69.0" fitWidth="84.0" layoutX="40.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="iconeProjeto" fitHeight="69.0" fitWidth="84.0" layoutX="15.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@icons/your-icon.png" /> <!-- Substitua pelo caminho do seu ícone -->
+         </image>
+      </ImageView>
+      <Label fx:id="labelNomeProjeto" contentDisplay="CENTER" graphicTextGap="1.0" layoutX="82.0" layoutY="80.0" prefHeight="93.0" prefWidth="283.0" text="NERDS" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textFieldAtividade1" layoutX="38.0" layoutY="226.0" prefHeight="38.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;" />
+      <TextField fx:id="textFieldAtividade2" layoutX="38.0" layoutY="279.0" prefHeight="38.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;" />
+      <TextField fx:id="textFieldAtividade3" layoutX="38.0" layoutY="335.0" prefHeight="38.0" prefWidth="371.0" style="-fx-background-color: #FFFFFF;" />
+   </children>
+</Pane>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

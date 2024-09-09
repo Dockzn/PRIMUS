@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.primus.primus.criarAtividadeController">
+   <children>
+      <Text fill="#fcfcfc" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Criar Atividade" underline="true">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Text>
+      <Text fill="#fcfcfc" layoutX="10.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nome da Atividade: " />
+      <TextField fx:id="campoNome" layoutX="119.0" layoutY="58.0" prefHeight="25.0" prefWidth="180.0" promptText="Nome" />
+      <Text fill="#fcfcfc" layoutX="15.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Complexidade:" />
+      <MenuButton fx:id="complexidade" layoutX="119.0" layoutY="99.0" mnemonicParsing="false" text="Selecionar Comp.">
+        <items>
+            <MenuItem fx:id="opcaoFacil" mnemonicParsing="false" text="facil" />
+          <MenuItem fx:id="opcaoMedio" mnemonicParsing="false" text="medio" />
+          <MenuItem fx:id="opcaoDificil" mnemonicParsing="false" text="dificil" />
+        </items>
+      </MenuButton>
+      <Text fill="#fcfcfc" layoutX="14.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Local:" wrappingWidth="50.5625">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Text>
+      <TextField fx:id="local" layoutX="119.0" layoutY="140.0" prefHeight="25.0" prefWidth="180.0" promptText="Inserir Local" />
+      <Text fill="#fcfcfc" layoutX="19.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horas Estimadas:" wrappingWidth="100.5625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="originalEstimate" layoutX="118.0" layoutY="186.0" prefHeight="25.0" prefWidth="79.0" promptText="Inserir Horas Estimadas" />
+      <Text fill="#fcfcfc" layoutX="14.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Comentários:" wrappingWidth="100.5625">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <TextField fx:id="comentarios" layoutX="116.0" layoutY="266.0" prefHeight="63.0" prefWidth="334.0" />
+      <Button fx:id="criarAtividade" layoutX="486.0" layoutY="360.0" mnemonicParsing="false" onAction="#criarAtividade" prefHeight="26.0" prefWidth="66.0" text="Criar" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="337.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="107.0" fitWidth="124.0" layoutX="446.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="campoResponsavel" layoutX="118.0" layoutY="227.0" promptText="Inserir Responsável" />
+      <Text fill="WHITE" layoutX="19.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsável:" />
+      <Button fx:id="botaoVoltar" layoutX="397.0" layoutY="360.0" mnemonicParsing="false" onAction="#voltarGeral" prefHeight="26.0" prefWidth="66.0" text="Voltar" />
+   </children>
+</Pane>
