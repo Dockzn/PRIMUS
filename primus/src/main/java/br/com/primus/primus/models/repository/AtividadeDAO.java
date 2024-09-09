@@ -1,13 +1,8 @@
 package br.com.primus.primus.models.repository;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import br.com.primus.primus.models.entity.Atividade;
-import br.com.primus.primus.models.entity.AtividadeComplexidade;
-import br.com.primus.primus.models.entity.AtividadeStatus;
 import java.util.HashMap;
 import java.util.Map;
+
+import br.com.primus.primus.models.entity.Atividade;
 
 
 public class AtividadeDAO {
