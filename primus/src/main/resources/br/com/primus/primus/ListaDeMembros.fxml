@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #100F0F;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="206.0" layoutY="23.0" text="Lista de Membros" textFill="#2148c0">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox layoutX="61.0" prefHeight="100.0" prefWidth="200.0" />
+      <ScrollPane hbarPolicy="ALWAYS" hmax="0.0" layoutX="22.0" layoutY="85.0" prefHeight="258.0" prefWidth="556.0" vbarPolicy="ALWAYS" vmax="2.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="422.0" prefWidth="534.0">
+               <children>
+                  <HBox layoutX="8.0" layoutY="14.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro1" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Marcos Davi Sena Pinheiro" />
+                        <Label fx:id="matriculaMembro1" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="49.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro2" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Diego Amorim Gomes" />
+                        <Label fx:id="alunoMembro2" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="84.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro3" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Arthur Dentes" />
+                        <Label fx:id="matriculaMembro3" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="111.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro4" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Anderson Vascx" />
+                        <Label fx:id="alunoMembro4" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="146.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro5" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Gustashow Intercurso" />
+                        <Label fx:id="matriculaMembro5" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="181.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro6" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Leon S Kennedy" />
+                        <Label fx:id="matriculaMembro6" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox layoutX="8.0" layoutY="216.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label fx:id="nomeMembro7" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Mario e Luigi" />
+                        <Label fx:id="matriculMembro7" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="nomeMembro8" layoutX="8.0" layoutY="251.0" prefHeight="35.0" prefWidth="526.0" style="-fx-background-color: #A9A9A9;">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="35.0" prefWidth="286.0" style="-fx-label-padding: 5px; -fx-line-spacing: center;" text="Carl Johnson CJ" />
+                        <Label fx:id="matriculaMembro8" alignment="CENTER" prefHeight="35.0" prefWidth="286.0" text="555555" />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Button fx:id="botaoVoltar" layoutX="521.0" layoutY="357.0" mnemonicParsing="false" onAction="#voltarParaMenuDoProjeto" prefHeight="29.0" prefWidth="57.0" style="-fx-background-color: #000000; -fx-background-radius: 5px;" text="Voltar" textFill="WHITE" />
+   </children>
+</Pane>
