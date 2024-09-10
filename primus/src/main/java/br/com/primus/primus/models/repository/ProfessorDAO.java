@@ -15,8 +15,8 @@
 //     private Connection connection;
 
 //     /**
-//      * Construtor da classe ProfessorDAO.
-//      * Inicializa a conexão com o banco de dados.
+//      * Não foi implementado , pois o nosso projeto é focado na gestão interna de um projeto
+//      é realizada pelo coordenador
 //      */
 //     public ProfessorDAO() {
 //         try {

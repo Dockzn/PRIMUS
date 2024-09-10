@@ -1,21 +1,21 @@
 package br.com.primus.primus;
-import br.com.primus.primus.models.*;
-import br.com.primus.primus.models.entity.*;
-import br.com.primus.primus.models.repository.*;
+import java.io.IOException;
+import java.time.LocalDate;
+
+import br.com.primus.primus.models.entity.Atividade;
+import br.com.primus.primus.models.entity.AtividadeComplexidade;
+import br.com.primus.primus.models.entity.AtividadeStatus;
+import br.com.primus.primus.models.repository.AtividadeDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
-import javafx.scene.control.MenuItem;
-
-import java.io.IOException;
-import java.time.LocalDate;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class criarAtividadeController {
     @FXML
@@ -67,6 +67,7 @@ public class criarAtividadeController {
 
             // Adicionando a atividade ao DAO
             atividadeDAO.adicionarAtividade(novaAtividade);
+
             mostrarAlerta("Atividade criada com sucesso!", Alert.AlertType.INFORMATION);
             
         } catch (Exception e) {

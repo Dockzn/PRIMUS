@@ -1,10 +1,16 @@
 package br.com.primus.primus;
 
+import java.io.*;
+import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 
 public class SelecaoDeProjetoController{
 
@@ -37,7 +43,17 @@ public class SelecaoDeProjetoController{
 
     @FXML
     void entrarNoProjeto(ActionEvent event) {
-        
+        trocarTela("menu-projeto.fxml");
     }
 
+    private void trocarTela(String fxml) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+            Parent root = loader.load();
+            Stage stage = (Stage) botaoEntrar.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
