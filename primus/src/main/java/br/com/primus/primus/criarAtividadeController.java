@@ -55,6 +55,11 @@ public class criarAtividadeController {
                 }
             }*/
 
+
+            if (horas < 0) {
+                mostrarAlerta("O valor de horas estimadas não pode ser menor que 0.", Alert.AlertType.WARNING);
+                return; // Interrompe a execução do método se a validação falhar
+            }
             // Status padrão (ex: em andamento)
             AtividadeStatus status = AtividadeStatus.FAZENDO;
 
@@ -69,6 +74,7 @@ public class criarAtividadeController {
             atividadeDAO.adicionarAtividade(novaAtividade);
 
             mostrarAlerta("Atividade criada com sucesso!", Alert.AlertType.INFORMATION);
+            System.out.println(novaAtividade.toString());
             
         } catch (Exception e) {
             mostrarAlerta("Houve um erro interno no sistema", Alert.AlertType.INFORMATION);

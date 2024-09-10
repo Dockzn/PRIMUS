@@ -18,14 +18,6 @@ public class Noticia {
         this.descricao = descricao;
         this.dataCriacao = new Date();
     }
-    
-    public String getDescricao() {
-        return descricao;
-    }
-    
-    public void setDescricao(String descricao) {
-        if (descricao != null) this.descricao = descricao;
-    }
 
     public String getTitulo() {
         return titulo;
@@ -33,6 +25,14 @@ public class Noticia {
 
     public void setTitulo(String titulo) {
         if (titulo != null) this.titulo = titulo;
+    }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+    
+    public void setDescricao(String descricao) {
+        if (descricao != null) this.descricao = descricao;
     }
     
     public Date getDataCriacao() {

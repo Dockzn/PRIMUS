@@ -1,96 +1,59 @@
-// package br.com.primus.primus.models.repository;
+package br.com.primus.primus.models.repository;
+import br.com.primus.primus.models.entity.Membro;
+import br.com.primus.primus.models.entity.Atividade;
+import br.com.primus.primus.models.entity.Documento;
 
-// import java.sql.Connection;
-// import java.sql.DriverManager;
-// import java.sql.PreparedStatement;
-// import java.sql.ResultSet;
-// import java.sql.SQLException;
-// import java.sql.Statement;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.List;
 
-// import models.entity.Aluno;
+public class AlunoDAO {
 
-// public class AlunoDAO {
-//     private Connection connection;
+    // Criar e adicionar uma nova atividade à lista de atividades de um membro
+    public void criarAtividade(Membro membro, Atividade novaAtividade) {
+        if (membro == null || novaAtividade == null) {
+            System.out.println("Dados inválidos. Verifique o membro e a atividade.");
+            return;
+        }
+        // Adiciona a nova atividade à lista de atividades do membro
+        membro.getAtividades().add(novaAtividade);
+        System.out.println("Atividade '" + novaAtividade.getNome() + "' criada com sucesso.");
+    }
 
-//     public AlunoDAO() {
-//         // Configurar a conexão com o banco de dados
-//         try {
-//             Class.forName("com.mysql.cj.jdbc.Driver");
-//             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
-//         } catch (ClassNotFoundException | SQLException e) {
-//             e.printStackTrace();
-//         }
-//     }
+    // Remover uma atividade da lista de atividades de um membro
+    public void removerAtividade(Membro membro, Atividade atividadeRemover) {
+        if (membro == null || atividadeRemover == null) {
+            System.out.println("Dados inválidos. Verifique o membro e a atividade.");
+            return;
+        }
+        // Remove a atividade da lista
+        if (membro.getAtividades().remove(atividadeRemover)) {
+            System.out.println("Atividade '" + atividadeRemover.getNome() + "' removida com sucesso.");
+        } else {
+            System.out.println("Atividade não encontrada na lista.");
+        }
+    }
 
-//     /**
-//      * Adiciona um novo aluno no banco de dados.
-//      * 
-//      * @param aluno Objeto Aluno contendo os dados a serem inseridos.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public void adicionarAluno(Aluno aluno) throws SQLException {
-//         String sql = "INSERT INTO alunos (nome, email, cargo, matricula, curso) VALUES (?, ?, ?, ?, ?)";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setString(1, aluno.getNome());
-//             statement.setString(2, aluno.getEmail());
-//             statement.setString(3, aluno.getCargo());
-//             statement.setString(4, aluno.getMatricula());
-//             statement.setString(5, aluno.getCurso());
-//             statement.executeUpdate();
-//         }
-//     }
+    // Criar e adicionar um novo documento à lista de documentos
+    public void criarDocumento(List<Documento> documentos, Documento novoDocumento) {
+        if (documentos == null || novoDocumento == null) {
+            System.out.println("Dados inválidos. Verifique a lista de documentos e o documento.");
+            return;
+        }
+        // Adiciona o novo documento à lista de documentos
+        documentos.add(novoDocumento);
+        System.out.println("Documento criado com sucesso.");
+    }
 
-//     /**
-//      * Lista todos os alunos presentes no banco de dados.
-//      * 
-//      * @return Uma lista de objetos Aluno.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public List<Aluno> listarAlunos() throws SQLException {
-//         List<Aluno> alunos = new ArrayList<>();
-//         String sql = "SELECT * FROM alunos";
-//         try (Statement statement = connection.createStatement();
-//              ResultSet resultSet = statement.executeQuery(sql)) {
-//             while (resultSet.next()) {
-//                 String nome = resultSet.getString("nome");
-//                 String email = resultSet.getString("email");
-//                 String cargo = resultSet.getString("cargo");
-//                 String matricula = resultSet.getString("matricula");
-//                 String curso = resultSet.getString("curso");
-//                 Aluno aluno = new Aluno(nome, email, cargo, matricula, curso);
-//                 alunos.add(aluno);
-//             }
-//         }
-//         return alunos;
-//     }
-
-//     /**
-//      * Edita os dados de um aluno existente no banco de dados.
-//      * 
-//      * @param aluno Objeto Aluno contendo os dados atualizados.
-//      */
-//     public void editarAluno(Aluno aluno){
-//         /* Ainda vai ser implementado */
-//     }
-
-//     /**
-//      * Remove um aluno do banco de dados.
-//      * 
-//      * @param aluno Objeto Aluno a ser removido.
-//      */
-//     public void removerAluno(Aluno aluno){
-//         /* Ainda vai ser implementado */
-//     }
-
-//     /**
-//      * Vai buscar um aluno específico no banco
-//      * @param aluno
-//      */
-//     public void buscarAluno(Aluno aluno){
-//         /* Ainda vai ser implementado */
-//     }
-
-
-// }
+    // Remover um documento da lista de documentos
+    public void removerDocumento(List<Documento> documentos, Documento documentoRemover) {
+        if (documentos == null || documentoRemover == null) {
+            System.out.println("Dados inválidos. Verifique a lista de documentos e o documento.");
+            return;
+        }
+        // Remove o documento da lista
+        if (documentos.remove(documentoRemover)) {
+            System.out.println("Documento removido com sucesso.");
+        } else {
+            System.out.println("Documento não encontrado na lista.");
+        }
+    }
+}

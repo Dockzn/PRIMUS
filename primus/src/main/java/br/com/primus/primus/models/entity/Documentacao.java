@@ -19,7 +19,7 @@ public class Documentacao {
     }
 
     public void setDocumentos(List<Documento> documentos) {
-        this.documentos = documentos;
+        if(documentos!=null) this.documentos = documentos;
     }
 
     @Override

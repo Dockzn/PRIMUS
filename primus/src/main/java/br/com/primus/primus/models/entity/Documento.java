@@ -31,14 +31,6 @@ public class Documento {
         if (descricao != null) this.descricao = descricao;
     }
 
-    public List<Arquivo> getArquivos() {
-        return arquivos;
-    }
-    
-    public void setArquivos(List<Arquivo> arquivos) {
-        if (arquivos != null) this.arquivos = arquivos;
-    }
-
     public Date getDataPublicacao() {
         return dataPublicacao;
     }
@@ -46,6 +38,7 @@ public class Documento {
     public void setDataPublicacao(Date dataPublicacao) {
         if (dataPublicacao != null) this.dataPublicacao = dataPublicacao;
     }
+
 
     public String getMembroResponsavel() {
         return membroResponsavel;
@@ -61,5 +54,13 @@ public class Documento {
 
     public void setHistorico(List<Membro> historico) {
         if (historico != null) this.historico = historico;
+    }
+
+    public List<Arquivo> getArquivos() {
+        return arquivos;
+    }
+    
+    public void setArquivos(List<Arquivo> arquivos) {
+        if (arquivos != null) this.arquivos = arquivos;
     }
 }
