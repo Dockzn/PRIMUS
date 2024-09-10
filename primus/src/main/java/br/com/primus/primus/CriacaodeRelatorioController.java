@@ -3,6 +3,9 @@ package br.com.primus.primus;
 import java.io.IOException;
 import java.util.Date;
 
+import br.com.primus.primus.models.entity.Relatorio;
+import br.com.primus.primus.models.entity.RelatorioTipo;
+import br.com.primus.primus.models.repository.RelatorioDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +22,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import br.com.primus.primus.models.entity.Relatorio;
-import br.com.primus.primus.models.entity.RelatorioTipo;
-import br.com.primus.primus.models.repository.RelatorioDAO;
 
 public class CriacaodeRelatorioController {
 
