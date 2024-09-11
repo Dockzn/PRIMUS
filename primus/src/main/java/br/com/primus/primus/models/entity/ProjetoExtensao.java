@@ -43,7 +43,11 @@ public class ProjetoExtensao {
     }
 
     public void setCoordernador(Coordenador coordernador) {
-        if (coordernador != null) this.coordernador = coordernador;
+        if (coordernador != null){
+            this.coordernador = coordernador;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar o nome do coordenador.");
+        }
     }
 
     public Date getDataVigencia() {
@@ -59,7 +63,11 @@ public class ProjetoExtensao {
     }
 
     public void setTitulo(String titulo) {
-        if (titulo != null) this.titulo = titulo;
+        if (titulo != null){
+            this.titulo = titulo;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar um título.");
+        }
     }
 
     public ProjetoEstado getEstado() {
@@ -67,7 +75,8 @@ public class ProjetoExtensao {
     }
 
     public void setEstado(ProjetoEstado estado) {
-        if (estado != null) this.estado = estado;
+        if (estado != null)
+            this.estado = estado;
     }
 
     public List<String> getRelatorios() {

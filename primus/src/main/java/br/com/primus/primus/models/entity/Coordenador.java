@@ -12,6 +12,7 @@ public class Coordenador extends Professor {
 
     private List<ProjetoExtensao> projetosCoordenados;
    
+
     public Coordenador(String nome, String email, String siape) {
         super(nome, email, siape);
     }

@@ -9,6 +9,8 @@ public class Aluno {
 
     private String nome, email, cargo, matricula, curso;
 
+    public Aluno(){}
+
     public Aluno(String nome, String email, String cargo, String matricula, String curso) {
         this.nome = nome;
         this.email = email;
@@ -22,7 +24,11 @@ public class Aluno {
     }
 
     public void setNome(String nome) {
-        if (nome != null) this.nome = nome;
+        if (nome != null){ 
+            this.nome = nome;
+        }else{
+            throw new IllegalArgumentException("Digite um nome válido.");
+        }
     }
 
     public String getEmail() {
@@ -30,7 +36,12 @@ public class Aluno {
     }
 
     public void setEmail(String email) {
-        if(email != null) this.email = email;
+        if(email != null && email.contains("@") && email.contains(".com") || email.contains(".com.br")
+             || email.contains("alu.ufc.br")){
+                 this.email = email;
+        }else{
+            throw new IllegalArgumentException("Não é um email valido!");
+        }
     }
 
     public String getCargo() {
@@ -38,7 +49,11 @@ public class Aluno {
     }
     
     public void setCargo(String cargo) {
-        if(cargo != null) this.cargo = cargo;
+        if(cargo != null){
+            this.cargo = cargo;
+        }else{
+            throw new IllegalArgumentException("As tags devem ser preenchidas");
+        }
     }
 
     public String getMatricula() {
@@ -51,6 +66,8 @@ public class Aluno {
     public void setMatricula(String matricula) {
         if(matricula != null && matricula.length() == 6){
             this.matricula = matricula;
+        }else{
+            throw new IllegalArgumentException("Digite uma matrícula válida.");
         }
     }
 
@@ -59,6 +76,10 @@ public class Aluno {
     }
 
     public void setCurso(String curso) {
-        if(curso != null) this.curso = curso;
+        if(curso != null){
+            this.curso = curso;
+        }else{
+            throw new IllegalArgumentException("Digite um curso válido.");
+        }
     }
 }

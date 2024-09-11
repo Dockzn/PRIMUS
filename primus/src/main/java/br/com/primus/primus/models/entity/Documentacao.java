@@ -10,6 +10,8 @@ public class Documentacao {
 
     private List<Documento> documentos;
 
+    public Documentacao(){}
+
     public Documentacao(List<Documento> documentos) {
         this.documentos = documentos;
     }
@@ -19,7 +21,7 @@ public class Documentacao {
     }
 
     public void setDocumentos(List<Documento> documentos) {
-        if(documentos!=null) this.documentos = documentos;
+        if(documentos != null) this.documentos = documentos;
     }
 
     @Override

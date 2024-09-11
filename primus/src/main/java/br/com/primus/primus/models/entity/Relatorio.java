@@ -12,8 +12,7 @@ public class Relatorio {
     private Date dataLimite;
 
     // Construtor padrão
-    public Relatorio() {
-    }
+    public Relatorio(){}
 
     // Construtor completo
     public Relatorio(int id, RelatorioTipo tipo, String observacoes, String campoAnexo, Date dataLimite) {
@@ -30,7 +29,11 @@ public class Relatorio {
     }
 
     public void setId(int id) {
-        this.id = id;
+        if(id >= 0)
+            this.id = id;
+        else{
+            throw new IllegalArgumentException("ID inválido.");
+        }
     }
 
     public RelatorioTipo getTipo() {
@@ -38,7 +41,8 @@ public class Relatorio {
     }
 
     public void setTipo(RelatorioTipo tipo) {
-        this.tipo = tipo;
+        if(tipo != null)
+            this.tipo = tipo;
     }
 
     public String getObservacoes() {
@@ -46,7 +50,11 @@ public class Relatorio {
     }
 
     public void setObservacoes(String observacoes) {
-        this.observacoes = observacoes;
+        if(observacoes != null)
+            this.observacoes = observacoes;
+        else{
+            throw new IllegalArgumentException("Adicione uma descrição.");
+        }
     }
 
     public String getCampoAnexo() {
@@ -54,7 +62,8 @@ public class Relatorio {
     }
 
     public void setCampoAnexo(String campoAnexo) {
-        this.campoAnexo = campoAnexo;
+        if(campoAnexo != null)
+            this.campoAnexo = campoAnexo;
     }
 
     public Date getDataLimite() {

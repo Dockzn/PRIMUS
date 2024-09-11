@@ -17,6 +17,8 @@ public class Documento {
     private List<Membro> historico = new ArrayList<>();
     private List<Arquivo> arquivos = new ArrayList<>();
     
+    public Documento(){}
+
     public Documento(String descricao, Date dataPublicacao, String membroResponsavel) {
         this.descricao = descricao;
         this.dataPublicacao = dataPublicacao;
@@ -28,7 +30,11 @@ public class Documento {
     }
 
     public void setDescricao(String descricao) {
-        if (descricao != null) this.descricao = descricao;
+        if (descricao != null){
+            this.descricao = descricao;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar uma descrição para o documento.");
+        }
     }
 
     public Date getDataPublicacao() {
@@ -36,7 +42,8 @@ public class Documento {
     }
 
     public void setDataPublicacao(Date dataPublicacao) {
-        if (dataPublicacao != null) this.dataPublicacao = dataPublicacao;
+        if (dataPublicacao != null)
+            this.dataPublicacao = dataPublicacao;
     }
 
 
@@ -45,7 +52,11 @@ public class Documento {
     }
 
     public void setMembroResponsavel(String membroResponsavel) {
-        if(membroResponsavel != null) this.membroResponsavel = membroResponsavel;
+        if(membroResponsavel != null){
+            this.membroResponsavel = membroResponsavel;
+        }else{
+            throw new IllegalArgumentException("É obrigatório inserir o nome do responsável.");
+        }
     }
 
     public List<Membro> getHistorico() {

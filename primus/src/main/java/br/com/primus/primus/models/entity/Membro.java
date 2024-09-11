@@ -12,6 +12,8 @@ public class Membro extends Aluno {
 
     private List<Atividade> atividades = new ArrayList<>();
 
+    public Membro(){}
+    
     public Membro(String nome, String email, String cargo, String matricula, String curso) {
         super(nome, email, cargo, matricula, curso);
     }
