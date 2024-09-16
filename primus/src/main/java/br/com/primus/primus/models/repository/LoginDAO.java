@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class LoginDAO {
     private static Map<String, String> credenciais = new HashMap<>();
+    public boolean isExistent = true;
 
     static {
         // Adicionando alguns usuários fictícios afins de teste
@@ -19,11 +20,10 @@ public class LoginDAO {
         return credenciais.containsKey(matricula) && credenciais.get(matricula).equals(senha);
     }
 
-    public boolean cadastrarUsuario(String matricula, String senha) {
+    public void cadastrarUsuario(String matricula, String senha) {
         if (credenciais.containsKey(matricula)) {
-            return false; // Matrícula já existe
+            isExistent = false; // Matrícula já existe
         }
         credenciais.put(matricula, senha);
-        return true;
     }
 }
