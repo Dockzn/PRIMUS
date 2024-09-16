@@ -9,6 +9,8 @@ public class Sala {
 
     private String local;
     
+    public Sala(){}
+
     public Sala(String local) {
         this.local = local;
     }
@@ -18,6 +20,10 @@ public class Sala {
     }
 
     public void setLocal(String local) {
-        if (local != null) this.local = local;
+        if (local != null){
+            this.local = local;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar um título.");
+        }
     }
 }

@@ -1,53 +1,110 @@
-// package br.com.primus.primus.models.repository;
-// import java.util.List;
+package br.com.primus.primus.models.repository;
 
-// import models.entity.Coordenador;
-// ;
+import br.com.primus.primus.models.entity.Coordenador;
+import br.com.primus.primus.models.entity.Membro;
+import br.com.primus.primus.models.entity.ProjetoExtensao;
 
-// public class CoordenadorDAO {
 
-//     /**
-//      * Busca um coordenador no sistema pelo seu SIAPE.
-//      * @param siape O SIAPE do coordenador a ser buscado.
-//      * @return O coordenador correspondente ao SIAPE fornecido, ou null se não encontrado.
-//      */
-//     public Coordenador buscarCoordenadorPorSiape(String siape) {
-//         return null;
-//     }
-    
-//     /**
-//      * Lista todos os coordenadores cadastrados no sistema.
-//      * @return Uma lista de todos os coordenadores.
-//      * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
-//      */
-//     public List<Coordenador> listarCoordenadores() {
-//         throw new UnsupportedOperationException("Unimplemented method 'listarCoordenadores'");
-//     }
+public class CoordenadorDAO {
 
-//     /**
-//      * Adiciona um novo coordenador ao sistema.
-//      * @param coordenador O coordenador a ser adicionado.
-//      * @throws UnsupportedOperationException Se o método ainda não estiver implementado.
-//      */
-//     public void adicionarCoordenador(Coordenador coordenador) {
-//         throw new UnsupportedOperationException("Unimplemented method 'adicionarCoordenador'");
-//     }
 
-//     /**
-//      * Remove um coordenador do sistema.
-//      * @param coordenador O coordenador a ser removido.
-//      * A ser implementado.
-//      */
-//     public void removerCoordenador(Coordenador coordenador){
-//        /* A ser implementado */ 
-//     }
+    public void adicionarMembro(Coordenador coordenador, ProjetoExtensao projeto, Membro membro) {
+        if (coordenador == null || projeto == null || membro == null) {
+            System.out.println("Dados inválidos. Verifique o coordenador, projeto e membro.");
+            return;
+        }
+        if (!coordenador.getProjetosCoordenados().contains(projeto)) {
+            System.out.println("O projeto não pertence a este coordenador.");
+            return;
+        }
 
-//     /**
-//      * Edita os dados de um coordenador no sistema.
-//      * @param coordenador O coordenador cujos dados serão editados.
-//      * A ser implementado.
-//      */
-//      public void editarCoordenador(Coordenador coordenador){
-//         /* A ser implementado */ 
-//      }
-// }
+        projeto.getMembros().add(membro.getMatricula());
+        System.out.println("Membro '" + membro.getNome() + "' adicionado ao projeto '" + projeto.getTitulo() + "'.");
+    }
+
+    public void removerMembro(Coordenador coordenador, ProjetoExtensao projeto, Membro membro) {
+        if (coordenador == null || projeto == null || membro == null) {
+            System.out.println("Dados inválidos. Verifique o coordenador, projeto e membro.");
+            return;
+        }
+        if (!coordenador.getProjetosCoordenados().contains(projeto)) {
+            System.out.println("O projeto não pertence a este coordenador.");
+            return;
+        }
+
+        if (projeto.getMembros().remove(membro.getMatricula())) {
+            System.out.println("Membro '" + membro.getNome() + "' removido do projeto '" + projeto.getTitulo() + "'.");
+        } else {
+            System.out.println("Membro não encontrado no projeto.");
+        }
+    }
+
+    public void atualizarMembro(Coordenador coordenador, ProjetoExtensao projeto, Membro membroAtualizado) {
+        if (coordenador == null || projeto == null || membroAtualizado == null) {
+            System.out.println("Dados inválidos.");
+            return;
+        }
+        if (!coordenador.getProjetosCoordenados().contains(projeto)) {
+            System.out.println("O projeto não pertence a este coordenador.");
+            return;
+        }
+        if (projeto.getMembros().contains(membroAtualizado.getMatricula())) {
+            projeto.getMembros().remove(membroAtualizado.getMatricula());
+            projeto.getMembros().add(membroAtualizado.getMatricula());
+            System.out.println("Informações do membro '" + membroAtualizado.getNome() + "' atualizadas no projeto.");
+        } else {
+            System.out.println("Membro não encontrado no projeto.");
+        }
+    }
+
+
+    public void criarProjeto(Coordenador coordenador, ProjetoExtensao novoProjeto) {
+        if (coordenador == null || novoProjeto == null) {
+            System.out.println("Dados inválidos.");
+            return;
+        }
+        coordenador.getProjetosCoordenados().add(novoProjeto);
+        System.out.println("Projeto '" + novoProjeto.getTitulo() + "' criado e adicionado aos projetos coordenados.");
+    }
+
+    public void removerProjeto(Coordenador coordenador, String tituloProjeto) {
+        if (coordenador == null || tituloProjeto == null || tituloProjeto.isEmpty()) {
+            System.out.println("Dados inválidos.");
+            return;
+        }
+        ProjetoExtensao projetoRemover = null;
+        for (ProjetoExtensao projeto : coordenador.getProjetosCoordenados()) {
+            if (projeto.getTitulo().equals(tituloProjeto)) {
+                projetoRemover = projeto;
+                break;
+            }
+        }
+        if (projetoRemover != null) {
+            coordenador.getProjetosCoordenados().remove(projetoRemover);
+            System.out.println("Projeto '" + tituloProjeto + "' removido com sucesso.");
+        } else {
+            System.out.println("Projeto não encontrado.");
+        }
+    }
+
+
+    public void atualizarProjeto(Coordenador coordenador, ProjetoExtensao projetoAtualizado) {
+        if (coordenador == null || projetoAtualizado == null) {
+            System.out.println("Dados inválidos.");
+            return;
+        }
+
+        
+        for (ProjetoExtensao projeto : coordenador.getProjetosCoordenados()) {
+            if (projeto.getTitulo().equals(projetoAtualizado.getTitulo())) {
+                projeto.setDataVigencia(projetoAtualizado.getDataVigencia());
+                projeto.setEstado(projetoAtualizado.getEstado());
+                projeto.setAtividades(projetoAtualizado.getAtividades());
+                projeto.setNoticias(projetoAtualizado.getNoticias());
+                System.out.println("Projeto '" + projetoAtualizado.getTitulo() + "' atualizado com sucesso.");
+                return;
+            }
+        }
+        System.out.println("Projeto não encontrado.");
+    }
+}

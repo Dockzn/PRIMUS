@@ -1,124 +1,59 @@
-// package models.repository;
+package br.com.primus.primus.models.repository;
+import br.com.primus.primus.models.entity.Membro;
+import br.com.primus.primus.models.entity.Atividade;
+import br.com.primus.primus.models.entity.Documento;
 
-// import java.sql.Connection;
-// import java.sql.DriverManager;
-// import java.sql.PreparedStatement;
-// import java.sql.ResultSet;
-// import java.sql.SQLException;
-// import java.sql.Statement;
-// import java.util.ArrayList;
-// import java.util.List;
+import java.util.List;
 
-// import models.entity.Membro;
+public class MembroDAO {
 
-// public class MembroDAO {
-//     private Connection connection;
+    // Criar e adicionar uma nova atividade à lista de atividades de um membro
+    public void criarAtividade(Membro membro, Atividade novaAtividade) {
+        if (membro == null || novaAtividade == null) {
+            System.out.println("Dados inválidos. Verifique o membro e a atividade.");
+            return;
+        }
+        // Adiciona a nova atividade à lista de atividades do membro
+        membro.getAtividades().add(novaAtividade);
+        System.out.println("Atividade '" + novaAtividade.getNome() + "' criada com sucesso.");
+    }
 
-//     /**
-//      * 
-//      * Inicializa a conexão com o banco de dados.
-//      */
-//     public MembroDAO() {
-//         try {
-//             Class.forName("com.mysql.cj.jdbc.Driver");
-//             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
-//         } catch (ClassNotFoundException | SQLException e) {
-//             e.printStackTrace();
-//         }
-//     }
+    // Remover uma atividade da lista de atividades de um membro
+    public void removerAtividade(Membro membro, Atividade atividadeRemover) {
+        if (membro == null || atividadeRemover == null) {
+            System.out.println("Dados inválidos. Verifique o membro e a atividade.");
+            return;
+        }
+        // Remove a atividade da lista
+        if (membro.getAtividades().remove(atividadeRemover)) {
+            System.out.println("Atividade '" + atividadeRemover.getNome() + "' removida com sucesso.");
+        } else {
+            System.out.println("Atividade não encontrada na lista.");
+        }
+    }
 
-//     /**
-//      * Adiciona um novo membro ao banco de dados.
-//      * @param membro O membro a ser adicionado.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public void adicionarMembro(Membro membro) throws SQLException {
-//         String sql = "INSERT INTO membros (nome, email, cargo, matricula, curso) VALUES (?, ?, ?, ?, ?)";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setString(1, membro.getNome());
-//             statement.setString(2, membro.getEmail());
-//             statement.setString(3, membro.getCargo());
-//             statement.setString(4, membro.getMatricula());
-//             statement.setString(5, membro.getCurso());
-//             statement.executeUpdate();
-//         }
-//     }
+    // Criar e adicionar um novo documento à lista de documentos
+    public void criarDocumento(List<Documento> documentos, Documento novoDocumento) {
+        if (documentos == null || novoDocumento == null) {
+            System.out.println("Dados inválidos. Verifique a lista de documentos e o documento.");
+            return;
+        }
+        // Adiciona o novo documento à lista de documentos
+        documentos.add(novoDocumento);
+        System.out.println("Documento criado com sucesso.");
+    }
 
-//     /**
-//      * Lista todos os membros cadastrados no banco de dados.
-//      * @return Uma lista de todos os membros.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public List<Membro> listarMembros() throws SQLException {
-//         List<Membro> membros = new ArrayList<>();
-//         String sql = "SELECT * FROM membros";
-//         try (Statement statement = connection.createStatement();
-//              ResultSet resultSet = statement.executeQuery(sql)) {
-//             while (resultSet.next()) {
-//                 String nome = resultSet.getString("nome");
-//                 String email = resultSet.getString("email");
-//                 String cargo = resultSet.getString("cargo");
-//                 String matricula = resultSet.getString("matricula");
-//                 String curso = resultSet.getString("curso");
-//                 Membro membro = new Membro(nome, email, cargo, matricula, curso);
-//                 membros.add(membro);
-//             }
-//         }
-//         return membros;
-//     }
-
-//     /**
-//      * Busca um membro no banco de dados pelo seu ID.
-//      * @param id O ID do membro a ser buscado.
-//      * @return O membro correspondente ao ID fornecido, ou null se não encontrado.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public Membro buscarMembroPorId(int id) throws SQLException {
-//         Membro membro = null;
-//         String sql = "SELECT * FROM membros WHERE id = ?";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setInt(1, id);
-//             try (ResultSet resultSet = statement.executeQuery()) {
-//                 if (resultSet.next()) {
-//                     String nome = resultSet.getString("nome");
-//                     String email = resultSet.getString("email");
-//                     String cargo = resultSet.getString("cargo");
-//                     String matricula = resultSet.getString("matricula");
-//                     String curso = resultSet.getString("curso");
-//                     membro = new Membro(nome, email, cargo, matricula, curso);
-//                 }
-//             }
-//         }
-//         return membro;
-//     }
-
-//     /**
-//      * Atualiza os dados de um membro no banco de dados.
-//      * @param membro O membro cujos dados serão atualizados.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public void atualizarMembro(Membro membro) throws SQLException {
-//         String sql = "UPDATE membros SET nome = ?, email = ?, cargo = ?, matricula = ?, curso = ? WHERE id = ?";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setString(1, membro.getNome());
-//             statement.setString(2, membro.getEmail());
-//             statement.setString(3, membro.getCargo());
-//             statement.setString(4, membro.getMatricula());
-//             statement.setString(5, membro.getCurso());
-//             statement.executeUpdate();
-//         }
-//     }
-
-//     /**
-//      * Deleta um membro do banco de dados pelo seu ID.
-//      * @param id O ID do membro a ser deletado.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public void deletarMembro(int id) throws SQLException {
-//         String sql = "DELETE FROM membros WHERE id = ?";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setInt(1, id);
-//             statement.executeUpdate();
-//         }
-//     }
-// }
+    // Remover um documento da lista de documentos
+    public void removerDocumento(List<Documento> documentos, Documento documentoRemover) {
+        if (documentos == null || documentoRemover == null) {
+            System.out.println("Dados inválidos. Verifique a lista de documentos e o documento.");
+            return;
+        }
+        // Remove o documento da lista
+        if (documentos.remove(documentoRemover)) {
+            System.out.println("Documento removido com sucesso.");
+        } else {
+            System.out.println("Documento não encontrado na lista.");
+        }
+    }
+}

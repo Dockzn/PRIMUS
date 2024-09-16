@@ -1,86 +1,67 @@
-// package br.com.primus.primus.models.repository;
+package br.com.primus.primus.models.repository;
+import java.util.ArrayList;
+import java.util.List;
+import br.com.primus.primus.models.entity.Membro;
+import br.com.primus.primus.models.entity.Bolsista;
 
-// import models.entity.Bolsista;
+public class BolsistaDAO {
 
-// import java.sql.*;
-// import java.util.ArrayList;
-// import java.util.List;
+    private List<Membro> membros = new ArrayList<>();
+    private List<Bolsista> bolsistas = new ArrayList<>();
 
-// public class BolsistaDAO {
+    
+    public void virarBolsista(Membro membro, String relatorioBIA) {
+        if (membro == null) {
+            System.out.println("Membro inválido.");
+            return;
+        }
 
-//     private Connection connection;
+        if (isBolsista(membro)) {
+            System.out.println("O membro '" + membro.getNome() + "' já é bolsista.");
+            return;
+        }
 
-//     /**
-//      * Construtor da classe BolsistaDAO.
-//      * Inicializa a conexão com o banco de dados.
-//      */
-//     public BolsistaDAO() {
-//         // Configurar a conexão com o banco de dados
-//         try {
-//             Class.forName("com.mysql.cj.jdbc.Driver");
-//             this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/seu_banco_de_dados", "seu_usuario", "sua_senha");
-//         } catch (ClassNotFoundException | SQLException e) {
-//             e.printStackTrace();
-//         }
-//     }
+        Bolsista novoBolsista = new Bolsista(membro.getNome(), membro.getEmail(), membro.getCargo(), 
+                                             membro.getMatricula(), membro.getCurso(), relatorioBIA);
+        bolsistas.add(novoBolsista);
+        membros.remove(membro);
+        System.out.println("O membro '" + membro.getNome() + "' agora é bolsista.");
+    }
 
-//     /**
-//      * Adiciona um novo bolsista no banco de dados.
-//      * @param bolsista Objeto Bolsista contendo os dados a serem inseridos.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public void adicionarBolsista(Bolsista bolsista) throws SQLException {
-//         String sql = "INSERT INTO bolsistas (nome, email, cargo, matricula, curso, relatorioBIA) VALUES (?, ?, ?, ?, ?, ?)";
-//         try (PreparedStatement statement = connection.prepareStatement(sql)) {
-//             statement.setString(1, bolsista.getNome());
-//             statement.setString(2, bolsista.getEmail());
-//             statement.setString(3, bolsista.getCargo());
-//             statement.setString(4, bolsista.getMatricula());
-//             statement.setString(5, bolsista.getCurso());
-//             statement.setString(6, bolsista.getRelatorioBIA());
-//             statement.executeUpdate();
-//         }
-//     }
+    public void deixarDeSerBolsista(Bolsista bolsista) {
+        if (bolsista == null) {
+            System.out.println("Bolsista inválido.");
+            return;
+        }
 
-//     /**
-//      * Lista todos os bolsistas presentes no banco de dados.
-//      * @return Uma lista de objetos Bolsista.
-//      * @throws SQLException Se ocorrer um erro ao acessar o banco de dados.
-//      */
-//     public List<Bolsista> listarBolsistas() throws SQLException {
-//         List<Bolsista> bolsistas = new ArrayList<>();
-//         String sql = "SELECT * FROM bolsistas";
-//         try (Statement statement = connection.createStatement();
-//              ResultSet resultSet = statement.executeQuery(sql)) {
-//             while (resultSet.next()) {
-//                 String nome = resultSet.getString("nome");
-//                 String email = resultSet.getString("email");
-//                 String cargo = resultSet.getString("cargo");
-//                 String matricula = resultSet.getString("matricula");
-//                 String curso = resultSet.getString("curso");
-//                 String relatorioBIA = resultSet.getString("relatorioBIA");
-//                 Bolsista bolsista = new Bolsista(nome, email, cargo, matricula, curso, relatorioBIA);
-//                 bolsistas.add(bolsista);
-//             }
-//         }
-//         return bolsistas;
-//     }
+        Membro novoMembro = new Membro(bolsista.getNome(), bolsista.getEmail(), bolsista.getCargo(), 
+                                       bolsista.getMatricula(), bolsista.getCurso());
+        membros.add(novoMembro);
+        bolsistas.remove(bolsista);
+        System.out.println("O bolsista '" + bolsista.getNome() + "' deixou de ser bolsista e agora é membro.");
+    }
 
-//     /**
-//      * Edita os dados de um bolsista no banco de dados.
-//      * @param bolsista O bolsista cujos dados serão editados.
-//      * A ser implementado.
-//      */
-//     public void editarBolsista(Bolsista bolsista) {
-//         /* A ser implementado */
-//     }
+    private boolean isBolsista(Membro membro) {
+        for (Bolsista bolsista : bolsistas) {
+            if (bolsista.getMatricula().equals(membro.getMatricula())) {
+                return true;
+            }
+        }
+        return false;
+    }
 
-//     /**
-//      * Remove um bolsista do banco de dados.
-//      * @param bolsista O bolsista a ser removido.
-//      * A ser implementado.
-//      */
-//     public void removerBolsista(Bolsista bolsista) {
-//         /* A ser implementado */
-//     }
-// }
+    public List<Bolsista> listarBolsistas() {
+        return bolsistas;
+    }
+
+    public List<Membro> listarMembros() {
+        return membros;
+    }
+
+    public void adicionarMembro(Membro membro) {
+        if (membro != null) {
+            membros.add(membro);
+            System.out.println("Membro '" + membro.getNome() + "' adicionado com sucesso.");
+        }
+    }
+}
