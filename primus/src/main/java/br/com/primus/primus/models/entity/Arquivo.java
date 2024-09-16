@@ -7,12 +7,18 @@ public class Arquivo {
     
     private String nome, endereco;
 
+    public Arquivo(){}
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        if (nome != null) this.nome = nome;
+        if (nome != null){
+            this.nome = nome;
+        }else{
+            throw new IllegalArgumentException("Digite um nome válido");
+        }
     }
 
     public String getEndereco() {
@@ -20,6 +26,10 @@ public class Arquivo {
     }
 
     public void setEndereco(String endereco) {
-        if (endereco != null) this.endereco = endereco;
+        if (endereco != null){
+            this.endereco = endereco;
+        }else{
+            throw new IllegalArgumentException("Digite um endereço válido");
+        }
     }
 }

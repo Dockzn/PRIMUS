@@ -1,36 +1,38 @@
-// package br.com.primus.primus.models.entity;
+package br.com.primus.primus.models.entity;
 
-// import java.util.List;
+import java.util.List;
 
-// /** 
-//  * A classe Documentação representa uma seção reservada do site destinada a guardar arquivos, documentos, artigos e afins recebidos 
-//  * da classe Documento. Coordenadores e Membros têm acesso para visualizá-la, mas apenas Coordenadores têm todas as permissões para editá-la.
-//  */
-// public class Documentacao {
+/** 
+ * A classe Documentação representa uma seção reservada do site destinada a guardar arquivos, documentos, artigos e afins recebidos 
+ * da classe Documento. Coordenadores e Membros têm acesso para visualizá-la, mas apenas Coordenadores têm todas as permissões para editá-la.
+ */
+public class Documentacao {
 
-//     private List<Documento> documentos;
+    private List<Documento> documentos;
 
-//     public Documentacao(List<Documento> documentos) {
-//         this.documentos = documentos;
-//     }
+    public Documentacao(){}
 
-//     public List<Documento> getDocumentos() {
-//         return documentos;
-//     }
+    public Documentacao(List<Documento> documentos) {
+        this.documentos = documentos;
+    }
 
-//     public void setDocumentos(List<Documento> documentos) {
-//         this.documentos = documentos;
-//     }
+    public List<Documento> getDocumentos() {
+        return documentos;
+    }
 
-//     @Override
-//     public String toString() {
-//         StringBuilder sb = new StringBuilder();
-//         sb.append("Documentacao{documentos=");
-//         for (Documento doc : documentos) {
-//             sb.append(doc.toString()).append(", ");
-//         }
-//         sb.delete(sb.length() - 2, sb.length());
-//         sb.append('}');
-//         return sb.toString();
-//     }
-// }
+    public void setDocumentos(List<Documento> documentos) {
+        if(documentos != null) this.documentos = documentos;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Documentacao{documentos=");
+        for (Documento doc : documentos) {
+            sb.append(doc.toString()).append(", ");
+        }
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append('}');
+        return sb.toString();
+    }
+}

@@ -7,6 +7,8 @@ public class Professor {
 
     private String nome, email, siape;
 
+    public Professor(){}
+
     public Professor(String nome, String email, String siape) {
         this.nome = nome;
         this.email = email;
@@ -18,7 +20,11 @@ public class Professor {
     }
 
     public void setNome(String nome) {
-        if (nome != null) this.nome = nome;
+        if (nome != null){
+            this.nome = nome;
+        }else{
+            throw new IllegalArgumentException("Não é um nome válido!");
+        }
     }
 
     public String getEmail() {
@@ -26,7 +32,12 @@ public class Professor {
     }
 
     public void setEmail(String email) {
-        if (email != null) this.email = email;
+        if(email != null && email.contains("@") || email.contains(".com") 
+                || email.contains(".com.br") || email.contains("@ufc.br")){
+            this.email = email;
+        }else{
+            throw new IllegalArgumentException("Não é um email valido!");
+        }
     }
 
     public String getSiape() {
@@ -34,6 +45,7 @@ public class Professor {
     }
 
     public void setSiape(String siape) {
-        if (siape != null) this.siape = siape;
+        if (siape != null && siape.length() == 7)
+             this.siape = siape;
     }
 }
