@@ -1,59 +1,65 @@
-// package models.repository;
-// import models.entity.Documento;
+package br.com.primus.primus.models.repository;
+import br.com.primus.primus.models.entity.Documentacao;
+import br.com.primus.primus.models.entity.Documento;
 
-// public class DocumentoDAO {
+import java.util.List;
 
-//     /**
-//      * Envia um documento no sistema.
-//      * @param documento O documento a ser enviado.
-//      * A ser implementado.
-//      */
-//     public void enviarDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
+public class DocumentoDAO {
 
-//     /**
-//      * Cancela um documento no sistema.
-//      * @param documento O documento a ser cancelado.
-//      * A ser implementado.
-//      */
-//     public void cancelarDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
+    private Documentacao documentacao;
 
-//     /**
-//      * Cria um novo documento no sistema.
-//      * @param documento O documento a ser criado.
-//      * A ser implementado.
-//      */
-//     public void criarDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
+    public DocumentoDAO(Documentacao documentacao) {
+        this.documentacao = documentacao;
+    }
 
-//     /**
-//      * Exclui um documento do sistema.
-//      * @param documento O documento a ser excluído.
-//      * A ser implementado.
-//      */
-//     public void excluirDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
-    
-//     /**
-//      * Edita os dados de um documento no sistema.
-//      * @param documento O documento cujos dados serão editados.
-//      * A ser implementado.
-//      */
-//     public void editarDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
+    // Método para adicionar um novo Documento à lista
+    public void adicionarDocumento(Documento novoDocumento) {
+        if (novoDocumento != null) {
+            documentacao.getDocumentos().add(novoDocumento);
+            System.out.println("Documento adicionado com sucesso: " + novoDocumento.getDescricao());
+        } else {
+            System.out.println("Documento inválido.");
+        }
+    }
 
-//     /**
-//      * Lê os dados de um documento no sistema.
-//      * @param documento O documento cujos dados serão lidos.
-//      * A ser implementado.
-//      */
-//     public void lerDocumento(Documento documento) {
-//         /* A ser implementado */
-//     }
-// }
+    // Método para remover um Documento da lista
+    public boolean removerDocumento(String descricao) {
+        List<Documento> documentos = documentacao.getDocumentos();
+        for (Documento doc : documentos) {
+            if (doc.getDescricao().equals(descricao)) {
+                documentos.remove(doc);
+                System.out.println("Documento removido: " + descricao);
+                return true;
+            }
+        }
+        System.out.println("Documento não encontrado: " + descricao);
+        return false;
+    }
+
+    // Método para acessar e exibir um Documento por sua descrição
+    public Documento acessarDocumento(String descricao) {
+        for (Documento doc : documentacao.getDocumentos()) {
+            if (doc.getDescricao().equals(descricao)) {
+                System.out.println("Documento acessado: " + doc);
+                return doc;
+            }
+        }
+        System.out.println("Documento não encontrado: " + descricao);
+        return null;
+    }
+
+    // Método para atualizar um Documento existente
+    public boolean atualizarDocumento(String descricao, Documento documentoAtualizado) {
+        List<Documento> documentos = documentacao.getDocumentos();
+        for (int i = 0; i < documentos.size(); i++) {
+            Documento doc = documentos.get(i);
+            if (doc.getDescricao().equals(descricao)) {
+                documentos.set(i, documentoAtualizado);
+                System.out.println("Documento atualizado: " + descricao);
+                return true;
+            }
+        }
+        System.out.println("Documento não encontrado: " + descricao);
+        return false;
+    }
+}

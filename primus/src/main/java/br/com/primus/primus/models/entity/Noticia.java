@@ -13,18 +13,12 @@ public class Noticia {
     private String titulo, descricao;
     private Date dataCriacao;
     
+    public Noticia(){}
+    
     public Noticia(String titulo, String descricao) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.dataCriacao = new Date();
-    }
-    
-    public String getDescricao() {
-        return descricao;
-    }
-    
-    public void setDescricao(String descricao) {
-        if (descricao != null) this.descricao = descricao;
     }
 
     public String getTitulo() {
@@ -32,7 +26,23 @@ public class Noticia {
     }
 
     public void setTitulo(String titulo) {
-        if (titulo != null) this.titulo = titulo;
+        if (titulo != null){ 
+            this.titulo = titulo;
+        }else{
+            throw new IllegalArgumentException("Digite um título válido.");
+        }
+    }
+    
+    public String getDescricao() {
+        return descricao;
+    }
+    
+    public void setDescricao(String descricao) {
+        if (descricao != null){ 
+            this.descricao = descricao;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar uma descrição para a notícia.");
+        }
     }
     
     public Date getDataCriacao() {

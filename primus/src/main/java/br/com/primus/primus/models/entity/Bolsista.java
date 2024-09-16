@@ -4,6 +4,8 @@ public class Bolsista extends Aluno {
 
     private String relatorioBIA;
 
+    public Bolsista(){}
+
     public Bolsista(String nome, String email, String cargo, String matricula, String curso, String relatorioBIA) {
         super(nome, email, cargo, matricula, curso);
         this.relatorioBIA = relatorioBIA;
@@ -14,6 +16,10 @@ public class Bolsista extends Aluno {
     }
 
     public void setRelatorioBIA(String relatorioBIA) {
-        if (relatorioBIA != null) this.relatorioBIA = relatorioBIA;
+        if (relatorioBIA != null){
+            this.relatorioBIA = relatorioBIA;
+        }else{
+            throw new IllegalArgumentException("Relatório inválido.");
+        }  
     }
 }

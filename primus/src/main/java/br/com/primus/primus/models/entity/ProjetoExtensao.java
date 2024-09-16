@@ -15,8 +15,9 @@ public class ProjetoExtensao {
         relatorios = new ArrayList<>(),
         noticias = new ArrayList<>(),
         atividades = new ArrayList<>(),
-        areasAtuacao = new ArrayList<>(),
-        salas = new ArrayList<>();
+        areasAtuacao = new ArrayList<>();
+
+    private List<Sala> salas = new ArrayList<>();
     private Coordenador coordernador;
     private Date dataVigencia;
     private String titulo;
@@ -35,6 +36,47 @@ public class ProjetoExtensao {
 
     public void setMembros(List<String> membros) {
         if (membros != null) this.membros = membros;
+    }
+
+    public Coordenador getCoordernador() {
+        return coordernador;
+    }
+
+    public void setCoordernador(Coordenador coordernador) {
+        if (coordernador != null){
+            this.coordernador = coordernador;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar o nome do coordenador.");
+        }
+    }
+
+    public Date getDataVigencia() {
+        return dataVigencia;
+    }
+
+    public void setDataVigencia(Date dataVigencia) {
+        if (dataVigencia != null) this.dataVigencia = dataVigencia;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        if (titulo != null){
+            this.titulo = titulo;
+        }else{
+            throw new IllegalArgumentException("É obrigatório digitar um título.");
+        }
+    }
+
+    public ProjetoEstado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(ProjetoEstado estado) {
+        if (estado != null)
+            this.estado = estado;
     }
 
     public List<String> getRelatorios() {
@@ -69,43 +111,11 @@ public class ProjetoExtensao {
         if (areasAtuacao != null) this.areasAtuacao = areasAtuacao;
     }
 
-    public List<String> getSalas() {
+    public List<Sala> getSalas() {
         return salas;
     }
 
-    public void setSalas(List<String> salas) {
+    public void setSalas(List<Sala> salas) {
         if (salas != null) this.salas = salas;
-    }
-
-    public Coordenador getCoordernador() {
-        return coordernador;
-    }
-
-    public void setCoordernador(Coordenador coordernador) {
-        if (coordernador != null) this.coordernador = coordernador;
-    }
-
-    public Date getDataVigencia() {
-        return dataVigencia;
-    }
-
-    public void setDataVigencia(Date dataVigencia) {
-        if (dataVigencia != null) this.dataVigencia = dataVigencia;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        if (titulo != null) this.titulo = titulo;
-    }
-
-    public ProjetoEstado getEstado() {
-        return estado;
-    }
-
-    public void setEstado(ProjetoEstado estado) {
-        if (estado != null) this.estado = estado;
     }
 }

@@ -9,14 +9,18 @@ import java.time.LocalDate;
  */
 public class Atividade {
 
+    private static int contadorId = 0; // Variável estática para contar o ID
+
+    private int id; // Novo campo ID
     private String nome, responsavel, comentario, tags, sala;
     private final LocalDate dataCriacao;
     private AtividadeComplexidade complexidade;
     private int horas, horasCumpridas;
     private AtividadeStatus status;
-    
-    public Atividade(String nome, String responsavel, String comentario, String tags, String sala,
+
+    public Atividade(int id,String nome, String responsavel, String comentario, String tags, String sala,
             LocalDate dataCriacao, AtividadeComplexidade complexidade, int horas, AtividadeStatus status) {
+        this.id = ++contadorId; // Atribui um ID único incremental
         this.nome = nome;
         this.responsavel = responsavel;
         this.comentario = comentario;
@@ -28,16 +32,41 @@ public class Atividade {
         this.status = status;
     }
 
+    // Getter para o ID
+
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        if(nome != null) this.nome = nome;
+        if(nome != null) 
+            this.nome = nome;
+        else{
+            throw new IllegalArgumentException("Digite o seu nome.");
+        }
     }
 
     public String getResponsavel() {
         return responsavel;
+    }
+
+    public void setResponsavel(String responsavel) {
+        if(responsavel != null){
+            this.responsavel = responsavel;
+        }else{
+            throw new IllegalArgumentException("Digite o nome do responsável.");
+        }
+    }
+
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        if(id >= 0){
+            this.id = id;
+        }else{
+            throw new IllegalArgumentException("ID inválido.");
+        }
     }
 
     public int getHorasCumpridas() {
@@ -45,11 +74,12 @@ public class Atividade {
     }
 
     public void setHorasCumpridas(int horasCumpridas) {
-        if (horasCumpridas < 0) this.horasCumpridas = horasCumpridas;
-    }
-
-    public void setResponsavel(String responsavel) {
-        if(responsavel != null) this.responsavel = responsavel;
+        if (horasCumpridas > 0){
+            this.horasCumpridas = horasCumpridas;
+        }
+        else{
+            throw new IllegalArgumentException("Horas inválidas.");
+        }
     }
 
     public LocalDate getDataCriacao() {
@@ -61,7 +91,8 @@ public class Atividade {
     }
 
     public void setComentario(String comentario) {
-        if(comentario != null) this.comentario = comentario;
+        if(comentario != null)
+            this.comentario = comentario;
     }
 
     public String getTags() {
@@ -69,7 +100,12 @@ public class Atividade {
     }
 
     public void setTags(String tags) {
-        if(tags != null) this.tags = tags;
+        if(tags != null){
+            this.tags = tags.toUpperCase().trim().replaceAll("\\s+", "");;
+        }
+        else{
+            throw new IllegalArgumentException("As tags devem ser preenchidas");
+        }
     }
 
     public AtividadeComplexidade getComplexidade() {
@@ -77,7 +113,8 @@ public class Atividade {
     }
 
     public void setComplexidade(AtividadeComplexidade complexidade) {
-        if (complexidade != null) this.complexidade = complexidade;
+        if (complexidade != null) 
+            this.complexidade = complexidade;
     }
 
     public int getHoras() {
@@ -85,15 +122,23 @@ public class Atividade {
     }
 
     public void setHoras(int horas) {
-        if (horas > 0) this.horas = horas;
+        if (horas > 0) {
+            this.horas = horas;
+        } else {
+            throw new IllegalArgumentException("Escolha inválida de horas.");
+        }
     }
-
+    
     public String getSala() {
         return sala;
     }
 
     public void setSala(String sala) {
-        if(sala != null) this.sala = sala;
+        if(sala != null){
+            this.sala = sala;
+        }else{
+            throw new IllegalArgumentException("Digite uma sala válida.");
+        }
     }
 
     public AtividadeStatus getStatus() {
@@ -101,6 +146,7 @@ public class Atividade {
     }
 
     public void setStatus(AtividadeStatus status) {
-        if (status != null) this.status = status;
+        if (status != null)
+            this.status = status;
     }
 }
