@@ -1,5 +1,12 @@
 package br.com.primus.primus;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.util.Date;
 
@@ -53,6 +60,8 @@ public class CriacaodeRelatorioController {
     private TextArea texteAreaEscreverRelatorio;
 
     @FXML
+    void cancelarRelatorio(ActionEvent event) {
+
     private ToggleGroup tipoRelatorioGroup;
 
     private RelatorioTipo tipoSelecionado;
@@ -81,16 +90,20 @@ public class CriacaodeRelatorioController {
 
     @FXML
     void escolhaBia(ActionEvent event) {
+
+
         tipoSelecionado = RelatorioTipo.BIA;
     }
 
     @FXML
     void escolhaPrex(ActionEvent event) {
+
         tipoSelecionado = RelatorioTipo.PREX;
     }
 
     @FXML
     void salvarRelatorio(ActionEvent event) {
+
         String observacoes = texteAreaEscreverRelatorio.getText();
         boolean erro = false;
         StringBuilder mensagemErro = new StringBuilder("Por favor, corrija os seguintes problemas:\n");
@@ -128,6 +141,9 @@ public class CriacaodeRelatorioController {
 
     @FXML
     void voltarMenuDoProjeto(ActionEvent event) {
+
+    }
+
         Stage stage = (Stage) botaoVoltar.getScene().getWindow();
 
         try {

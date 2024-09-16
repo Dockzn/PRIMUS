@@ -1,8 +1,6 @@
 package br.com.primus.primus.models.repository;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import br.com.primus.primus.models.entity.Relatorio;
 
 public class RelatorioDAO {
