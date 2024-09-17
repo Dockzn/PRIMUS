@@ -1,7 +1,7 @@
 package br.com.primus.primus;
+
 import java.io.IOException;
 import java.time.LocalDate;
-
 import br.com.primus.primus.models.entity.Atividade;
 import br.com.primus.primus.models.entity.AtividadeComplexidade;
 import br.com.primus.primus.models.entity.AtividadeStatus;
@@ -14,13 +14,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class criarAtividadeController {
+public class CriarAtividadeController {
+
     @FXML
     private TextField campoNome, campoResponsavel, local, originalEstimate, comentarios;
-    
+
     @FXML
     private Button botaoVoltar;
 
@@ -28,83 +30,100 @@ public class criarAtividadeController {
     private MenuButton complexidade;
 
     private AtividadeDAO atividadeDAO = new AtividadeDAO();
-
+    private AtividadeComplexidade selectedComplexidade = AtividadeComplexidade.FACIL; // Default value
 
     private void mostrarAlerta(String mensagem, Alert.AlertType tipo) {
         Alert alerta = new Alert(tipo);
         alerta.setContentText(mensagem);
         alerta.showAndWait();
     }
-    
+
+    @FXML
+    public void initialize() {
+        for (MenuItem item : complexidade.getItems()) {
+            item.setOnAction(e -> {
+                selectedComplexidade = AtividadeComplexidade.valueOf(item.getText().toUpperCase());
+                complexidade.setText(item.getText()); // Update MenuButton text
+            });
+        }
+    }
 
     @FXML
     public void criarAtividade() {
-        boolean isBoolean = true;
+        String nome = campoNome.getText().trim();
+        String responsavel = campoResponsavel.getText().trim();
+        String sala = local.getText().trim();
+        String comentario = comentarios.getText().trim();
+        String tags = "";
+
+        // Validate inputs
+        if (nome.isEmpty() || responsavel.isEmpty() || sala.isEmpty() || comentario.isEmpty()) {
+            mostrarAlerta("Todos os campos devem ser preenchidos.", Alert.AlertType.WARNING);
+            return;
+        }
+
+        int horas;
         try {
-            String nome = campoNome.getText();
-            String responsavel = campoResponsavel.getText();
-            String sala = local.getText();
-            int horas = Integer.parseInt(originalEstimate.getText());
-            String comentario = comentarios.getText();
-            String tags = "";
-            AtividadeComplexidade comp = AtividadeComplexidade.FACIL;
-            /*for (MenuItem item : complexidade.getItems()) {
-                if (item.()) {
-                    comp = AtividadeComplexidade.valueOf(item.getText().toUpperCase());
-                    break;
-                }
-            }*/
-
-
+            horas = Integer.parseInt(originalEstimate.getText().trim());
             if (horas < 0) {
                 mostrarAlerta("O valor de horas estimadas não pode ser menor que 0.", Alert.AlertType.WARNING);
-                return; // Interrompe a execução do método se a validação falhar
+                return;
             }
-            // Status padrão (ex: em andamento)
-            AtividadeStatus status = AtividadeStatus.FAZENDO;
+        } catch (NumberFormatException e) {
+            mostrarAlerta("Por favor, insira um número válido para as horas estimadas.", Alert.AlertType.WARNING);
+            return;
+        }
 
-            // Criação da nova atividade
-            Atividade novaAtividade = new Atividade(
-                    atividadeDAO.listarAtividades().size() + 1, // ID gerado automaticamente
-                    nome, responsavel, comentario, tags, sala,
-                    LocalDate.now(), comp, horas, status
-            );
+        // Status padrão (ex: em andamento)
+        AtividadeStatus status = AtividadeStatus.FAZENDO;
 
+        // Criação da nova atividade
+        Atividade novaAtividade = new Atividade(
+                atividadeDAO.listarAtividades().size() + 1, // ID gerado automaticamente
+                nome, responsavel, comentario, tags, sala,
+                LocalDate.now(), selectedComplexidade, horas, status
+        );
+
+        try {
             // Adicionando a atividade ao DAO
             atividadeDAO.adicionarAtividade(novaAtividade);
 
             mostrarAlerta("Atividade criada com sucesso!", Alert.AlertType.INFORMATION);
-            System.out.println(novaAtividade.toString());
-            
+
+            // Atualizar a tela de exibição
+            atualizarExibicaoAtividades();
         } catch (Exception e) {
-            mostrarAlerta("Houve um erro interno no sistema", Alert.AlertType.INFORMATION);
-        }
-
-
-       
-    }
-
-    private void trocarTela(String fxml) {
-        
-    }
-@FXML
-    void IrParaTelaCriarAtividade(ActionEvent event) {
-        trocarTela("/path/to/criarAtividade.fxml");
-    }
-
-
-    @FXML
-    void voltarGeral(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("menu-projeto.fxml"));
-            Parent root = loader.load();
-            Stage stage = (Stage) botaoVoltar.getScene().getWindow();
-            stage.setScene(new Scene(root));
-        } catch (IOException e) {
+            mostrarAlerta("Houve um erro interno no sistema ao criar a atividade.", Alert.AlertType.ERROR);
             e.printStackTrace();
         }
     }
 
-    
+    private void atualizarExibicaoAtividades() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/primus/primus/exibicao-atividades.fxml"));
+            Parent root = loader.load();
+            ExibicaoAtividadesController controller = loader.getController();
+            controller.atualizarTabela(); // Update the table with the new activity
 
+            Stage stage = (Stage) botaoVoltar.getScene().getWindow();
+            stage.setScene(new Scene(root));
+
+        } catch (IOException e) {
+            mostrarAlerta("Não foi possível carregar a tela de exibição de atividades.", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void voltarGeral(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/primus/primus/menu-projeto.fxml"));
+            Parent root = loader.load();
+            Stage stage = (Stage) botaoVoltar.getScene().getWindow();
+            stage.setScene(new Scene(root));
+        } catch (IOException e) {
+            mostrarAlerta("Não foi possível carregar o menu do projeto.", Alert.AlertType.ERROR);
+            e.printStackTrace();
+        }
+    }
 }

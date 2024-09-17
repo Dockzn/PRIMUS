@@ -10,11 +10,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="622.0" style="-fx-background-color: #100F0F;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="622.0" style="-fx-background-color: #100F0F;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.primus.primus.CriacaoNoticiaController">
    <children>
       <ImageView fitHeight="75.0" fitWidth="73.0" layoutY="4.0">
          <image>
-            <Image url="@../../../../../../../../../Users/Davil/Downloads/_a49845d3-0c34-4c90-b17a-39b8e74aec21-removebg-preview%202@2x%20(1).png" />
+            <Image url="@images/primus.png" />
          </image>
       </ImageView>
       <Text fill="WHITE" layoutX="184.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CRIAÇÃO DE NOTÍCIA" textAlignment="CENTER" wrappingWidth="229.107421875">

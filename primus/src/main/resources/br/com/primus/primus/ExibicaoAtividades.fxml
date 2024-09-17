@@ -19,15 +19,13 @@
         <columns>
           <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="atividadeColumn" prefWidth="241.0" text="Atividades" />
-            <TableColumn fx:id="responsavelColumn" prefWidth="142.0" text="Responsáveis" />
+          <TableColumn fx:id="responsavelColumn" prefWidth="142.0" text="Responsáveis" />
         </columns>
       </TableView>
       <Button fx:id="deletarAtividade" layoutX="178.0" layoutY="347.0" mnemonicParsing="false" onAction="#deletarAtividade" text="Deletar Atividade" />
       <Button fx:id="atualizarAtividade" layoutX="301.0" layoutY="347.0" mnemonicParsing="false" onAction="#atualizarAtividade" text="Atualizar Atividade" />
       <Button fx:id="acessarAtividade" layoutX="429.0" layoutY="347.0" mnemonicParsing="false" onAction="#acessarAtividade" text="Acessar Atividade" />
-      <Button fx:id="criarAtiviade" layoutX="67.0" layoutY="347.0" mnemonicParsing="false" onAction="#criarAtividade" text="Criar Atividade" />
+      <Button fx:id="criarAtividade" layoutX="67.0" layoutY="347.0" mnemonicParsing="false" onAction="#criarAtividade" text="Criar Atividade" />
       <ImageView fitHeight="92.0" fitWidth="115.0" layoutX="453.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" />
-
-
    </children>
 </Pane>

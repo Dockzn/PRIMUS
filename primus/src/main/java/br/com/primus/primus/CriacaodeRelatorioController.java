@@ -1,12 +1,5 @@
 package br.com.primus.primus;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.image.ImageView;
 import java.io.IOException;
 import java.util.Date;
 
@@ -21,12 +14,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -59,11 +50,6 @@ public class CriacaodeRelatorioController {
     @FXML
     private TextArea texteAreaEscreverRelatorio;
 
-    @FXML
-    void cancelarRelatorio(ActionEvent event) {
-
-    private ToggleGroup tipoRelatorioGroup;
-
     private RelatorioTipo tipoSelecionado;
 
     private RelatorioDAO relatorioDAO = new RelatorioDAO();
@@ -75,8 +61,8 @@ public class CriacaodeRelatorioController {
         alert.setHeaderText(null);
         alert.setContentText("Tem certeza de que deseja cancelar? Todos os dados não salvos serão perdidos.");
 
-        ButtonType confirmButton = new ButtonType("Confirmar", ButtonData.OK_DONE);
-        ButtonType cancelButton = new ButtonType("Cancelar", ButtonData.CANCEL_CLOSE);
+        ButtonType confirmButton = new ButtonType("Confirmar", ButtonType.OK.getButtonData());
+        ButtonType cancelButton = new ButtonType("Cancelar", ButtonType.CANCEL.getButtonData());
         alert.getButtonTypes().setAll(confirmButton, cancelButton);
 
         alert.showAndWait().ifPresent(response -> {
@@ -90,20 +76,16 @@ public class CriacaodeRelatorioController {
 
     @FXML
     void escolhaBia(ActionEvent event) {
-
-
         tipoSelecionado = RelatorioTipo.BIA;
     }
 
     @FXML
     void escolhaPrex(ActionEvent event) {
-
         tipoSelecionado = RelatorioTipo.PREX;
     }
 
     @FXML
     void salvarRelatorio(ActionEvent event) {
-
         String observacoes = texteAreaEscreverRelatorio.getText();
         boolean erro = false;
         StringBuilder mensagemErro = new StringBuilder("Por favor, corrija os seguintes problemas:\n");
@@ -130,7 +112,7 @@ public class CriacaodeRelatorioController {
         Relatorio relatorio = new Relatorio();
         relatorio.setTipo(tipoSelecionado);
         relatorio.setObservacoes(observacoes);
-        relatorio.setCampoAnexo(""); 
+        relatorio.setCampoAnexo("");
         relatorio.setDataLimite(new Date());
 
         relatorioDAO.enviarRelatorio(relatorio);
@@ -141,9 +123,6 @@ public class CriacaodeRelatorioController {
 
     @FXML
     void voltarMenuDoProjeto(ActionEvent event) {
-
-    }
-
         Stage stage = (Stage) botaoVoltar.getScene().getWindow();
 
         try {

@@ -64,12 +64,12 @@ public class MenuController {
 
     @FXML
     void irParaTelaDeNoticias(ActionEvent event) {
-        trocarTela("/path/to/telaNoticias.fxml");
+        trocarTela("CriacaoNoticia.fxml");
     }
 
     @FXML
     void irParaTelaDocumentacao(ActionEvent event) {
-        trocarTela("/path/to/telaDocumentacao.fxml");
+        trocarTela("CriacaoDocumento.fxml");
     }
 
     @FXML
@@ -79,7 +79,7 @@ public class MenuController {
 
     @FXML
     void irParaTelaPrincipalDoProjeto(ActionEvent event) {
-        trocarTela("path/to/telaMaisInfoProjeto.fxml");
+        trocarTela("menu-projeto.fxml");
     }
 
     private void trocarTela(String fxml) {
