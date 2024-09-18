@@ -6,25 +6,23 @@ import java.util.Map;
 import br.com.primus.primus.models.entity.Atividade;
 
 public class AtividadeDAO {
-
     // Mapa para armazenar atividades com ID como chave
     private Map<Integer, Atividade> atividades;
+    private int proximoId; // Contador para o próximo ID
 
     public AtividadeDAO() {
         atividades = new HashMap<>();
+        proximoId = 1; // Inicializa o contador de IDs
     }
 
     // Método para adicionar uma atividade ao mapa
     public boolean adicionarAtividade(Atividade atividade) {
-        boolean isAdded = true;
-
-        if (atividade != null && !atividades.containsKey(atividade.getId())) {
-            atividades.put(atividade.getId(), atividade); // Adiciona ao map com o ID como chave
-        } else {
-            isAdded = false;
+        if (atividade != null) {
+            atividade.setId(proximoId++); // Atribui um ID único e incrementa
+            atividades.put(atividade.getId(), atividade);
+            return true; // Atividade adicionada com sucesso
         }
-
-        return isAdded;
+        return false; // Atividade nula
     }
 
     // Método para obter a atividade pelo ID

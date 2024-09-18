@@ -2,6 +2,7 @@ package br.com.primus.primus;
 
 import java.io.IOException;
 import java.time.LocalDate;
+
 import br.com.primus.primus.models.entity.Atividade;
 import br.com.primus.primus.models.entity.AtividadeComplexidade;
 import br.com.primus.primus.models.entity.AtividadeStatus;
@@ -48,65 +49,61 @@ public class CriarAtividadeController {
         }
     }
 
-    @FXML
-    public void criarAtividade() {
-        String nome = campoNome.getText().trim();
-        String responsavel = campoResponsavel.getText().trim();
-        String sala = local.getText().trim();
-        String comentario = comentarios.getText().trim();
-        String tags = "";
+   @FXML
+public void criarAtividade() {
+    String nome = campoNome.getText().trim();
+    String responsavel = campoResponsavel.getText().trim();
+    String sala = local.getText().trim();
+    String comentario = comentarios.getText().trim();
+    String tags = "";
 
-        // Validate inputs
-        if (nome.isEmpty() || responsavel.isEmpty() || sala.isEmpty() || comentario.isEmpty()) {
-            mostrarAlerta("Todos os campos devem ser preenchidos.", Alert.AlertType.WARNING);
-            return;
-        }
-
-        int horas;
-        try {
-            horas = Integer.parseInt(originalEstimate.getText().trim());
-            if (horas < 0) {
-                mostrarAlerta("O valor de horas estimadas não pode ser menor que 0.", Alert.AlertType.WARNING);
-                return;
-            }
-        } catch (NumberFormatException e) {
-            mostrarAlerta("Por favor, insira um número válido para as horas estimadas.", Alert.AlertType.WARNING);
-            return;
-        }
-
-        // Status padrão (ex: em andamento)
-        AtividadeStatus status = AtividadeStatus.FAZENDO;
-
-        // Criação da nova atividade
-        Atividade novaAtividade = new Atividade(
-                atividadeDAO.listarAtividades().size() + 1, // ID gerado automaticamente
-                nome, responsavel, comentario, tags, sala,
-                LocalDate.now(), selectedComplexidade, horas, status
-        );
-
-        try {
-            // Adicionando a atividade ao DAO
-            atividadeDAO.adicionarAtividade(novaAtividade);
-
-            mostrarAlerta("Atividade criada com sucesso!", Alert.AlertType.INFORMATION);
-
-            // Atualizar a tela de exibição
-            atualizarExibicaoAtividades();
-        } catch (Exception e) {
-            mostrarAlerta("Houve um erro interno no sistema ao criar a atividade.", Alert.AlertType.ERROR);
-            e.printStackTrace();
-        }
+    // Validar entradas
+    if (nome.isEmpty() || responsavel.isEmpty() || sala.isEmpty() || comentario.isEmpty()) {
+        mostrarAlerta("Todos os campos devem ser preenchidos.", Alert.AlertType.WARNING);
+        return;
     }
+
+    int horas;
+    try {
+        horas = Integer.parseInt(originalEstimate.getText().trim());
+        if (horas < 0) {
+            mostrarAlerta("O valor de horas estimadas não pode ser menor que 0.", Alert.AlertType.WARNING);
+            return;
+        }
+    } catch (NumberFormatException e) {
+        mostrarAlerta("Por favor, insira um número válido para as horas estimadas.", Alert.AlertType.WARNING);
+        return;
+    }
+
+    // Status padrão
+    AtividadeStatus status = AtividadeStatus.FAZENDO;
+
+    // Criando a nova atividade
+    Atividade novaAtividade = new Atividade(
+            nome, responsavel, comentario, tags, sala,
+            LocalDate.now(), selectedComplexidade, horas, status
+    );
+
+    // Adicionando a atividade ao DAO
+    if (atividadeDAO.adicionarAtividade(novaAtividade)) {
+        mostrarAlerta("Atividade criada com sucesso!", Alert.AlertType.INFORMATION);
+        atualizarExibicaoAtividades();
+    } else {
+        mostrarAlerta("Erro ao criar a atividade.", Alert.AlertType.ERROR);
+    }
+}
 
     private void atualizarExibicaoAtividades() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/primus/primus/exibicao-atividades.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/primus/primus/ExibicaoAtividades.fxml"));
             Parent root = loader.load();
             ExibicaoAtividadesController controller = loader.getController();
-            controller.atualizarTabela(); // Update the table with the new activity
+            controller.atualizarTabela(); // Atualiza a tabela com a nova atividade
 
+            // Obter a referência da janela atual
             Stage stage = (Stage) botaoVoltar.getScene().getWindow();
-            stage.setScene(new Scene(root));
+            stage.setScene(new Scene(root)); // Trocar a cena para a exibição de atividades
+            stage.setTitle("Exibição de Atividades"); // Define o título da janela
 
         } catch (IOException e) {
             mostrarAlerta("Não foi possível carregar a tela de exibição de atividades.", Alert.AlertType.ERROR);

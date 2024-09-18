@@ -3,7 +3,7 @@ package br.com.primus.primus.models.entity;
 import java.time.LocalDate;
 
 public class Atividade {
-    private int id;
+    private int id; // O ID será gerado no DAO
     private String nome;
     private String responsavel;
     private String comentarios;
@@ -14,10 +14,9 @@ public class Atividade {
     private int horasEstimadas;
     private AtividadeStatus status;
 
-    // Constructor
-    public Atividade(int id, String nome, String responsavel, String comentarios, String tags, String local,
+    // Construtor sem ID
+    public Atividade(String nome, String responsavel, String comentarios, String tags, String local,
                      LocalDate dataCriacao, AtividadeComplexidade complexidade, int horasEstimadas, AtividadeStatus status) {
-        this.id = id;
         this.nome = nome;
         this.responsavel = responsavel;
         this.comentarios = comentarios;
@@ -29,7 +28,7 @@ public class Atividade {
         this.status = status;
     }
 
-    // Getters and setters
+    // Getters e Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
     public String getNome() { return nome; }
