@@ -40,7 +40,7 @@
       </Button>
       <Line endX="-79.4000244140625" endY="226.69293212890625" layoutX="513.0" layoutY="183.0" startX="-79.4000244140625" startY="-183.0" stroke="WHITE" />
       <Text fill="WHITE" layoutX="468.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ultimas Noticias" />
-      <TextArea fx:id="textAreUltimasNoticias" editable="false" layoutX="449.0" layoutY="114.0" prefHeight="122.0" prefWidth="137.0" text="04/09/2024 as 19:41&#10;Aviso:&#10;&#10;Java não presta&#10;" wrapText="true">
+      <TextArea fx:id="textAreUltimasNoticias" editable="false" layoutX="449.0" layoutY="114.0" prefHeight="122.0" prefWidth="137.0" text="" wrapText="true">
          <font>
             <Font name="Times New Roman" size="10.0" />
          </font>

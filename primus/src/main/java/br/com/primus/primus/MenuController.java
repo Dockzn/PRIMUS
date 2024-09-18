@@ -59,7 +59,7 @@ public class MenuController {
 
     @FXML
     void irParaTelaDeAtividades(ActionEvent event) {
-        trocarTela("CriarAtividadeView.fxml");
+        trocarTela("ExibicaoAtividades.fxml");
     }
 
     @FXML
