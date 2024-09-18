@@ -90,35 +90,35 @@ public class ExibicaoAtividadesController {
         }
     }
 
-    @FXML
-    void criarAtividade() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("CriarAtividadeView.fxml"));
-            Parent root = loader.load();
-    
-            // Obter a referência da janela atual
-            Stage currentStage = (Stage) tabelaAtividades.getScene().getWindow();
-            
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            stage.setTitle("Criar Atividade");
-            
-            // Adiciona um evento de fechamento da nova janela
-            stage.setOnCloseRequest(event -> {
-                // Aqui você pode reabrir ou manter a janela atual aberta se preferir
-                currentStage.show(); // Mostra a janela atual novamente, se necessário
-            });
-    
-            stage.show();
-            currentStage.hide(); // Esconde a janela atual
-        } catch (IOException e) {
-            e.printStackTrace();
-            Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Erro ao Abrir a Tela");
-            alert.setHeaderText(null);
-            alert.setContentText("Não foi possível abrir a tela de criar atividade.");
-            alert.showAndWait();
-        }
+  @FXML
+void criarAtividade() {
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CriarAtividadeView.fxml"));
+        Parent root = loader.load();
+
+        // Obter a referência da janela atual
+        Stage currentStage = (Stage) tabelaAtividades.getScene().getWindow();
+        
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("Criar Atividade");
+        
+        // Adiciona um evento de fechamento da nova janela
+        stage.setOnCloseRequest(event -> {
+            // Aqui você pode reabrir ou manter a janela atual aberta se preferir
+            currentStage.show(); // Mostra a janela atual novamente, se necessário
+        });
+
+        stage.show();
+        currentStage.hide(); // Esconde a janela atual
+    } catch (IOException e) {
+        e.printStackTrace();
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro ao Abrir a Tela");
+        alert.setHeaderText(null);
+        alert.setContentText("Não foi possível abrir a tela de criar atividade.");
+        alert.showAndWait();
     }
-    
+}
+
 }
